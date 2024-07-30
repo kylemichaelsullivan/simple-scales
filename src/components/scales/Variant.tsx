@@ -1,0 +1,22 @@
+import { useIndex } from '../../context';
+import { Scale_Variants } from '../../types';
+
+function Variant() {
+  const { variant, handleVariantChange } = useIndex();
+
+  const variants: Scale_Variants[] = ['major', 'minor', 'pentatonic'];
+
+  return (
+    <select
+      className='Variant min-w-16 px-1 hover:ring-1'
+      value={variant}
+      onChange={(e) => handleVariantChange(e.target.value)}
+    >
+      {variants.map((variantOption) => (
+        <option key={variantOption}>{variantOption}</option>
+      ))}
+    </select>
+  );
+}
+
+export default Variant;
