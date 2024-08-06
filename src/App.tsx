@@ -2,7 +2,7 @@ import UsingFlats from './components/UsingFlats';
 import Title from './components/Title';
 import Scales from './components/scales/Scales';
 import Notes from './components/Notes';
-// import Displays from './components/displays/Displays';
+import Displays from './components/displays/Displays';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Title title='Simple Scales' />
       <Scales />
       <Notes />
-      {/* <Displays /> */}
+      <Displays />
     </div>
   );
 }

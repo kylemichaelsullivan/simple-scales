@@ -27,9 +27,9 @@ export type Notes_Sharps =
   | 'B';
 
 export type Scale_Tonics = number;
-
 export type Scale_Variants = 'major' | 'minor' | 'pentatonic';
-
 export type Scale_UsingFlats = boolean;
-
 export type Scale_NoteCount = number;
+
+export type Displays_Text = 'Piano' | 'Guitar' | 'Banjo' | 'Ukelele';
+export type Displays_Emoji = '🎹' | '🎸' | '🪕' | '🏝️';

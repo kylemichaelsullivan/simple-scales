@@ -6,22 +6,28 @@ import {
   type ReactNode,
 } from 'react';
 
-import type { Scale_Tonics, Scale_Variants, Scale_UsingFlats } from '../types';
+import type {
+  Scale_Tonics,
+  Scale_Variants,
+  Scale_UsingFlats,
+  Displays_Emoji,
+} from '../types';
 
-import { Flats, Sharps, Intervals } from '../lookups/Notes';
+import { Flats, Sharps, Intervals, Frequencies } from '../lookups/Notes';
 
 type IndexContextType = {
   tonic: Scale_Tonics;
   variant: Scale_Variants;
   usingFlats: Scale_UsingFlats;
   notes: number[];
-  // handleTonicChange: (tonic: number) => void;
-  // handleVariantChange: (variant: string) => void;
-  handleTonicChange: any;
-  handleVariantChange: any;
+  displays: Displays_Emoji[];
+  handleTonicChange: (tonic: number) => void;
+  handleVariantChange: (variant: Scale_Variants) => void;
+  handleDisplaysClick: (emoji: Displays_Emoji) => void;
   toggleUsingFlats: () => void;
   getNote: (note: number) => string;
   makeScale: (tonic: Scale_Tonics, variant: Scale_Variants) => void;
+  playNote: (note: number) => void;
   reset: () => void;
 };
 
@@ -34,6 +40,7 @@ type IndexContextProviderProps = {
 const initialTonic: Scale_Tonics = 0;
 const initialVariant: Scale_Variants = 'major';
 const initialUsingFlats: Scale_UsingFlats = true;
+const initialDisplays: Displays_Emoji[] = ['🎹', '🎸', '🪕', '🏝️'];
 
 export const IndexContextProvider = ({
   children,
@@ -43,6 +50,8 @@ export const IndexContextProvider = ({
   const [usingFlats, setUsingFlats] =
     useState<Scale_UsingFlats>(initialUsingFlats);
   const [notes, setNotes] = useState<Scale_Tonics[]>([tonic]);
+  const [displays, setDisplays] = useState<Displays_Emoji[]>(initialDisplays);
+  const [notePlaying, setNotePlaying] = useState<boolean>(false);
 
   function handleTonicChange(tonic: Scale_Tonics) {
     setTonic(tonic);
@@ -50,6 +59,14 @@ export const IndexContextProvider = ({
 
   function handleVariantChange(variant: Scale_Variants) {
     setVariant(variant);
+  }
+
+  function handleDisplaysClick(emoji: Displays_Emoji) {
+    const updatedDisplays = displays.includes(emoji)
+      ? displays.filter((item) => item !== emoji)
+      : [...displays, emoji];
+
+    setDisplays(updatedDisplays);
   }
 
   function toggleUsingFlats() {
@@ -72,6 +89,30 @@ export const IndexContextProvider = ({
     });
 
     setNotes(scaleNotes);
+  }
+
+  function getFrequency(note: number) {
+    return Frequencies[note];
+  }
+
+  function playNote(note: number) {
+    window.AudioContext = window.AudioContext;
+    const context = new AudioContext();
+
+    const oscillator = context.createOscillator();
+    oscillator.type = 'sine';
+    oscillator.frequency.value = getFrequency(note);
+    oscillator.connect(context.destination);
+
+    if (!notePlaying) {
+      oscillator.start();
+      setNotePlaying(true);
+    }
+
+    setTimeout(() => {
+      oscillator.stop();
+      setNotePlaying(false);
+    }, 1000);
   }
 
   function reset() {
@@ -104,11 +145,14 @@ export const IndexContextProvider = ({
         variant,
         usingFlats,
         notes,
+        displays,
         handleTonicChange,
         handleVariantChange,
+        handleDisplaysClick,
         toggleUsingFlats,
         getNote,
         makeScale,
+        playNote,
         reset,
       }}
     >
