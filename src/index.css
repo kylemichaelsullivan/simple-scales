@@ -53,6 +53,10 @@ select {
   border-right: 0;
 }
 
+.Banjo .String .Nut {
+  width: 3rem;
+}
+
 .Banjo .String:nth-child(4) .Fret {
   border-bottom-width: 1px;
 }
