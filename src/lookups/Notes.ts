@@ -33,7 +33,7 @@ export const Sharps: Notes_Sharps[] = [
 export const Intervals = {
   major: [1, 1, 0.5, 1, 1, 1, 0.5],
   minor: [1, 0.5, 1, 1, 0.5, 1, 1],
-  pentatonic: [1, 1, 1.5, 1, 1, 1.5],
+  pentatonic: [1, 1, 1.5, 1],
 };
 
 export const Frequencies: number[] = [
