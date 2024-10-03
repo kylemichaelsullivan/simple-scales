@@ -84,7 +84,7 @@ select {
 }
 
 .Piano {
-  --width-white: 6.25rem;
+  --width-white: min(calc((100vw - 2rem) / 7), 6.25rem);
   --width-black: calc(var(--width-white) * 0.6);
 }
 
