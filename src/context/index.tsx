@@ -164,7 +164,7 @@ export const IndexContextProvider = ({
 export const useIndex = (): IndexContextType => {
   const context = useContext(IndexContext);
   if (!context) {
-    throw new Error('useIndex must be used within a <IndexProvider />');
+    throw new Error('useIndex must be used within an <IndexContextProvider />');
   }
   return context;
 };
