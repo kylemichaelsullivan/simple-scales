@@ -31,9 +31,16 @@ export const Sharps: Notes_Sharps[] = [
 ];
 
 export const Intervals = {
-  major: [1, 1, 0.5, 1, 1, 1, 0.5],
-  minor: [1, 0.5, 1, 1, 0.5, 1, 1],
+  major: [1, 1, 0.5, 1, 1, 1],
+  minor: [1, 0.5, 1, 1, 0.5, 1],
   pentatonic: [1, 1, 1.5, 1],
+  ionian: [1, 1, 0.5, 1, 1, 1],
+  dorian: [1, 0.5, 1, 1, 1, 0.5],
+  phrygian: [0.5, 1, 1, 1, 0.5, 1],
+  lydian: [1, 1, 1, 0.5, 1, 1],
+  mixolydian: [1, 1, 0.5, 1, 1, 0.5],
+  aeolian: [1, 0.5, 1, 1, 0.5, 1],
+  locrian: [0.5, 1, 1, 0.5, 1, 1],
 };
 
 export const Frequencies: number[] = [

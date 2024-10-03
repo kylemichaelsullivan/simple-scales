@@ -4,7 +4,18 @@ import { Scale_Variants } from '../../types';
 function Variant() {
   const { variant, handleVariantChange } = useIndex();
 
-  const variants: Scale_Variants[] = ['major', 'minor', 'pentatonic'];
+  const variants: Scale_Variants[] = [
+    'major',
+    'minor',
+    'pentatonic',
+    'ionian',
+    'dorian',
+    'phrygian',
+    'lydian',
+    'mixolydian',
+    'aeolian',
+    'locrian',
+  ];
 
   return (
     <select
