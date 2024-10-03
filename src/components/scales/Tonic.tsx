@@ -5,7 +5,7 @@ function Tonic() {
 
   return (
     <select
-      className='Tonic min-w-14 px-1 hover:ring-1'
+      className='Tonic border border-slate-500 min-w-14 px-1 hover:ring-1'
       value={tonic}
       onChange={(e) => handleTonicChange(+e.target.value)}
     >
