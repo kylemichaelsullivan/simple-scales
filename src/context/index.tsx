@@ -24,6 +24,7 @@ type IndexContextType = {
   handleTonicChange: (tonic: number) => void;
   handleVariantChange: (variant: Scale_Variants) => void;
   handleDisplaysClick: (emoji: Displays_Emoji) => void;
+  capitalizeFirstLetter: (string: string) => string;
   toggleUsingFlats: () => void;
   getNote: (note: number) => string;
   makeScale: (tonic: Scale_Tonics, variant: Scale_Variants) => void;
@@ -71,6 +72,10 @@ export const IndexContextProvider = ({
 
   function toggleUsingFlats() {
     setUsingFlats(!usingFlats);
+  }
+
+  function capitalizeFirstLetter(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   function getNote(note: number) {
@@ -150,6 +155,7 @@ export const IndexContextProvider = ({
         handleVariantChange,
         handleDisplaysClick,
         toggleUsingFlats,
+        capitalizeFirstLetter,
         getNote,
         makeScale,
         playNote,

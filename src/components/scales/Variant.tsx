@@ -2,7 +2,7 @@ import { useIndex } from '../../context';
 import { Scale_Variants } from '../../types';
 
 function Variant() {
-  const { variant, handleVariantChange } = useIndex();
+  const { variant, handleVariantChange, capitalizeFirstLetter } = useIndex();
 
   const variants: Scale_Variants[] = [
     'major',
@@ -19,12 +19,14 @@ function Variant() {
 
   return (
     <select
-      className='Variant capitalize min-w-16 px-1 hover:ring-1'
+      className='Variant min-w-16 px-1 hover:ring-1'
       value={variant}
       onChange={(e) => handleVariantChange(e.target.value as Scale_Variants)}
     >
       {variants.map((variantOption) => (
-        <option key={variantOption}>{variantOption}</option>
+        <option key={variantOption}>
+          {capitalizeFirstLetter(variantOption)}
+        </option>
       ))}
     </select>
   );
