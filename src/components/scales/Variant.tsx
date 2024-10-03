@@ -24,7 +24,7 @@ function Variant() {
       onChange={(e) => handleVariantChange(e.target.value as Scale_Variants)}
     >
       {variants.map((variantOption) => (
-        <option key={variantOption}>
+        <option key={variantOption} value={variantOption}>
           {capitalizeFirstLetter(variantOption)}
         </option>
       ))}
