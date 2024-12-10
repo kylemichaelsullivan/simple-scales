@@ -52,6 +52,8 @@ select {
   width: calc((900% / 11) + 18px);
   height: 2rem;
   left: calc((-900% / 11) - 12px);
+  top: 0;
+  transform: none;
 }
 
 .Nut,
@@ -97,6 +99,16 @@ select {
 
 .allowed:hover::after {
   border-color: transparent;
+}
+
+.Banjo .String:has(+.DroneString) .Nut::before {
+  position: absolute;
+  content: "";
+  background: rgb(125 211 252 / var(--tw-bg-opacity, 1));
+  width: 9rem;
+  height: 100%;
+  top: 100%;
+  left: -4rem;
 }
 
 .Piano {
