@@ -10,7 +10,7 @@ function Displays() {
   const { displays } = useIndex();
 
   return (
-    <div className='Displays flex flex-col gap-8 max-w-screen-xl mx-auto'>
+    <div className='Displays flex flex-col gap-8 w-full max-w-screen-2xl mx-auto'>
       <DisplaysSelector />
       {displays.includes('🎹') && <Piano />}
       {displays.includes('🎸') && <Guitar />}
