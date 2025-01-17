@@ -7,17 +7,17 @@ import Banjo from './Banjo/Banjo';
 import DisplaysSelector from './DisplaysSelector';
 
 function Displays() {
-  const { displays } = useIndex();
+	const { displays } = useIndex();
 
-  return (
-    <div className='Displays flex flex-col gap-8 w-full max-w-screen-2xl mx-auto'>
-      <DisplaysSelector />
-      {displays.includes('🎹') && <Piano />}
-      {displays.includes('🎸') && <Guitar />}
-      {displays.includes('🪕') && <Banjo />}
-      {displays.includes('🏝️') && <Ukelele />}
-    </div>
-  );
+	return (
+		<div className='Displays flex flex-col gap-8 w-full max-w-screen-2xl mx-auto'>
+			<DisplaysSelector />
+			{displays.includes('🎹') && <Piano />}
+			{displays.includes('🎸') && <Guitar />}
+			{displays.includes('🪕') && <Banjo />}
+			{displays.includes('🏝️') && <Ukelele />}
+		</div>
+	);
 }
 
 export default Displays;
