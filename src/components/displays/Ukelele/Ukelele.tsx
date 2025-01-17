@@ -5,9 +5,9 @@ function Ukelele() {
 	const openNotes = [9, 4, 0, 7];
 
 	return (
-		<div className='Ukelele flex justify-center w-full'>
+		<div className='Ukelele flex w-full justify-center'>
 			<Label emoji='🏝️' />
-			<div className='fretboard flex flex-col border border-r-0 border-black w-full'>
+			<div className='fretboard flex w-full flex-col border border-r-0 border-black'>
 				{openNotes.map((note, i) => (
 					<String openNote={note} key={`${note}-${i}`} />
 				))}

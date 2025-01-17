@@ -4,7 +4,7 @@ type TitleProps = {
 
 function Title({ title }: TitleProps) {
 	return (
-		<h1 className='Title text-3xl font-bold text-center sm:text-5xl'>
+		<h1 className='Title text-center text-3xl font-bold sm:text-5xl'>
 			{title}
 		</h1>
 	);

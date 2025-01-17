@@ -9,7 +9,7 @@ type LabelProps = {
 function Label({ emoji }: LabelProps) {
 	return (
 		<div
-			className='Label flex items-center cursor-default text-3xl px-1'
+			className='Label flex cursor-default items-center px-1 text-3xl'
 			title={allDisplays[0][emoji]}
 		>
 			{emoji}

@@ -6,9 +6,9 @@ function Banjo() {
 	const openNotes = [2, 11, 7, 2];
 
 	return (
-		<div className='Banjo flex justify-center w-full'>
+		<div className='Banjo flex w-full justify-center'>
 			<Label emoji='🪕' />
-			<div className='fretboard flex flex-col border border-r-0 border-b-0 border-l-0 border-black w-full'>
+			<div className='fretboard flex w-full flex-col border border-b-0 border-l-0 border-r-0 border-black'>
 				{openNotes.map((note, i) => (
 					<String openNote={note} key={`${note}-${i}`} />
 				))}

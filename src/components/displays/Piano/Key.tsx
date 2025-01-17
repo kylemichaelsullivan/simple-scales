@@ -11,7 +11,7 @@ function Key({ isBlack, note, isAllowed }: KeyProps) {
 
 	return (
 		<div
-			className={`Key border border-black ${isBlack ? 'black' : 'white'}${isAllowed ? ' allowed' : ''}`}
+			className={`Key border border-black ${isBlack ? 'black' : 'white'}${isAllowed ? 'allowed' : ''}`}
 			title={getNote(note)}
 			onClick={() => playNote(note)}
 		/>

@@ -18,7 +18,7 @@ function Notes() {
 	}, [variant]);
 
 	return (
-		<div className='Notes bg-slate-200 border border-slate-500 shadow-md text-center'>
+		<div className='Notes border border-slate-500 bg-slate-200 text-center shadow-md'>
 			<div className={`grid grid-cols-${noteCount}`}>
 				{Array.from({ length: noteCount }, (_, index) => (
 					<div key={index + 1}>{index + 1}</div>

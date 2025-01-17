@@ -14,7 +14,7 @@ function TransposeUp() {
 	return (
 		<button
 			type='button'
-			className='TransposeUp bg-slate-200 border border-slate-500 w-8 h-8 hover:ring-1'
+			className='TransposeUp h-8 w-8 border border-slate-500 bg-slate-200 hover:ring-1'
 			title='Up a Fifth'
 			onClick={transposeUp}
 		>

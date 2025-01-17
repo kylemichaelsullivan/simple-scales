@@ -14,7 +14,7 @@ function TransposeDown() {
 	return (
 		<button
 			type='button'
-			className='TransposeDown bg-slate-200 border border-slate-500 w-8 h-8 hover:ring-1'
+			className='TransposeDown h-8 w-8 border border-slate-500 bg-slate-200 hover:ring-1'
 			title='Down a Fifth'
 			onClick={transposeDown}
 		>

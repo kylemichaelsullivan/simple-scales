@@ -9,7 +9,7 @@ function Piano() {
 	const { notes } = useIndex();
 
 	return (
-		<div className={`Piano relative flex justify-center w-full min-h-24`}>
+		<div className={`Piano relative flex min-h-24 w-full justify-center`}>
 			{Array.from({ length: keys }, (_, note) => (
 				<Key
 					isBlack={blackKeys.includes(note)}
