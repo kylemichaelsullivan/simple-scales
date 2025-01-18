@@ -9,7 +9,7 @@ function Fret({ note }: FretProps) {
 
 	return (
 		<div
-			className={`Fret border-r border-black w-full${notes.includes(note) ? 'allowed' : ''}`}
+			className={`Fret border-r border-black w-full${notes.includes(note) ? ' allowed' : ''}`}
 			title={getNote(note)}
 			onClick={() => playNote(note)}
 		></div>

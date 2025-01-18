@@ -9,7 +9,7 @@ function Nut({ note }: NutProps) {
 
 	return (
 		<div
-			className={`Nut bg-black${notes.includes(note) ? 'allowed' : ''} w-8`}
+			className={`Nut bg-black${notes.includes(note) ? ' allowed' : ''} w-8`}
 			title={getNote(note)}
 			onClick={() => playNote(note)}
 		></div>
