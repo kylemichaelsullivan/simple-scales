@@ -9,12 +9,14 @@ function Guitar() {
 	return (
 		<div className='Guitar flex w-full justify-center'>
 			<Label emoji='🎸' />
-			<div className='fretboard flex w-full flex-col'>
+			<div className='flex w-full flex-col'>
 				<FretNumbers />
 
-				{openNotes.map((note, i) => (
-					<String openNote={note} key={`${note}-${i}`} />
-				))}
+				<div className='fretboard border border-black'>
+					{openNotes.map((note, i) => (
+						<String openNote={note} key={`${note}-${i}`} />
+					))}
+				</div>
 			</div>
 		</div>
 	);

@@ -43,19 +43,6 @@ select {
 	z-index: 2;
 }
 
-.DroneString {
-	width: calc((600% / 11) + 3px);
-}
-
-.DroneString::before {
-	background: rgb(125 211 252 / var(--tw-bg-opacity, 1));
-	width: calc((900% / 11) + 18px);
-	height: 2rem;
-	left: calc((-900% / 11) - 12px);
-	top: 0;
-	transform: none;
-}
-
 .Nut,
 .Fret {
 	position: relative;
@@ -65,22 +52,6 @@ select {
 
 .Fret:last-child {
 	border-right: 0;
-}
-
-.Banjo {
-	--fretboard-color: #ffffff;
-}
-
-.Banjo .String .Nut {
-	width: 3rem;
-}
-
-.Banjo .String:nth-child(4) .Fret {
-	border-bottom-width: 1px;
-}
-
-.Banjo .String:nth-child(4) .Fret:nth-child(n + 7) {
-	border-bottom-width: 0;
 }
 
 .allowed::after {
@@ -99,16 +70,6 @@ select {
 
 .allowed:hover::after {
 	border-color: transparent;
-}
-
-.Banjo .String:has(+ .DroneString) .Nut::before {
-	position: absolute;
-	content: '';
-	background: rgb(125 211 252 / var(--tw-bg-opacity, 1));
-	width: 9rem;
-	height: 100%;
-	top: 100%;
-	left: -4rem;
 }
 
 .Piano {
@@ -147,10 +108,52 @@ select {
 	--fretboard-color: red;
 }
 
+.Banjo {
+	--fretboard-color: #ffffff;
+}
+
+.Banjo .String:nth-child(4) .Fret {
+	border-bottom-width: 1px;
+}
+
+.Banjo .String:nth-child(4) .Fret:nth-child(n + 7) {
+	border-bottom-width: 0;
+}
+
+.Banjo .DroneString .SkippedFret {
+	--tw-bg-opacity: 1;
+	border-bottom: 1px solid rgb(125 211 252 / var(--tw-bg-opacity));
+	z-index: 3;
+}
+
+.Banjo .DroneString .SkippedFret:first-child {
+	position: relative;
+}
+
+.Banjo .DroneString .SkippedFret:first-child::before {
+	--tw-bg-opacity: 1;
+	position: absolute;
+	content: '';
+	background-color: rgb(125 211 252 / var(--tw-bg-opacity));
+	width: 1rem;
+	height: 110%;
+	left: -0.5rem;
+	top: 0;
+}
+
+.Banjo .DroneString .Nut {
+	left: 0.5px;
+}
+
+.Banjo .DroneString .Fret {
+	border-bottom: 1px solid black;
+}
+
 .Ukelele {
 	--fretboard-color: yellow;
 }
 
+/* Utility Classes */
 .grid-cols-17 {
 	grid-template-columns: repeat(17, minmax(0, 1fr));
 }
