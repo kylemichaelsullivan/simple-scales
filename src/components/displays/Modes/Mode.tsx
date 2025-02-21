@@ -19,7 +19,9 @@ function Mode({
 
 	return (
 		<div className={`Mode grid grid-cols-8 ${background} capitalize`}>
-			<div className={className}>{`${tonicNote} ${mode}`}</div>
+			<div
+				className={`${className} text-xs sm:text-base`}
+			>{`${tonicNote} ${mode}`}</div>
 			{the_notes.map((note: string, i: number) => {
 				return <div key={`${note}-${i}`}>{note}</div>;
 			})}
