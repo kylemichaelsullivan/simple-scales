@@ -1,13 +1,17 @@
+import FretNumbers from '../FretNumbers';
 import Label from '../Label';
 import String from '../String';
 
 function Ukelele() {
+	// A E C G
 	const openNotes = [9, 4, 0, 7];
 
 	return (
 		<div className='Ukelele flex w-full justify-center'>
 			<Label emoji='🏝️' />
-			<div className='fretboard flex w-full flex-col border border-r-0 border-black'>
+			<div className='fretboard flex w-full flex-col'>
+				<FretNumbers />
+
 				{openNotes.map((note, i) => (
 					<String openNote={note} key={`${note}-${i}`} />
 				))}

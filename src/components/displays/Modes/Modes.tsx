@@ -34,14 +34,13 @@ function Modes() {
 
 	return (
 		<div className='Modes border border-slate-500 text-center capitalize shadow-md'>
-			<ModesHeading />
+			<ModesHeading tonicNote={tonicNote} />
 
 			{modes.map(({ mode, notes }, index) => (
 				<Mode
 					mode={mode}
 					the_notes={notes}
 					background={index % 2 !== 0 ? 'bg-slate-300' : 'bg-slate-200'}
-					tonicNote={tonicNote}
 					isCurrent={
 						(variant === 'major' && mode === 'ionian') ||
 						(variant === 'minor' && mode === 'aeolian') ||
