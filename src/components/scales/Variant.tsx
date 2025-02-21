@@ -19,7 +19,7 @@ function Variant() {
 
 	return (
 		<select
-			className='Variant min-w-16 border border-slate-500 px-1 hover:ring-1'
+			className='Variant min-w-16 border border-slate-500 rounded-none px-1 hover:ring-1'
 			value={variant}
 			onChange={(e) => handleVariantChange(e.target.value as Scale_Variants)}
 		>
