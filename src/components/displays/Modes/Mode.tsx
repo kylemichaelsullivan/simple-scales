@@ -14,7 +14,11 @@ function Mode({ mode, background, isCurrent, the_notes }: ModeProps) {
 		<div className={`Mode grid grid-cols-8 ${background} capitalize`}>
 			<div className={`${className} text-xs sm:text-base`}>{mode}</div>
 			{the_notes.map((note: string, i: number) => {
-				return <div key={`${note}-${i}`}>{note}</div>;
+				return (
+					<div className='text-xs sm:text-base' key={`${note}-${i}`}>
+						{note}
+					</div>
+				);
 			})}
 		</div>
 	);
