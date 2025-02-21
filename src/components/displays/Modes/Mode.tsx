@@ -11,11 +11,16 @@ function Mode({ mode, background, isCurrent, the_notes }: ModeProps) {
 	const className = isCurrent ? 'font-semibold' : 'font-medium';
 
 	return (
-		<div className={`Mode grid grid-cols-8 ${background} capitalize`}>
-			<div className={`${className} text-xs sm:text-base`}>{mode}</div>
+		<div className={`Mode grid grid-cols-17 ${background} capitalize`}>
+			<div className={`${className} col-span-3 text-xxs sm:text-base`}>
+				{mode}
+			</div>
 			{the_notes.map((note: string, i: number) => {
 				return (
-					<div className='text-xs sm:text-base' key={`${note}-${i}`}>
+					<div
+						className='col-span-2 text-xxs sm:text-base'
+						key={`${note}-${i}`}
+					>
 						{note}
 					</div>
 				);

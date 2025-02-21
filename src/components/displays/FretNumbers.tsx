@@ -5,7 +5,7 @@ function FretNumbers() {
 		<div className='FretNumbers flex justify-evenly bg-sky-300 w-full'>
 			{Array.from({ length: 11 }, (_, index) => (
 				<div
-					className={`${dottedFretIndexes.includes(index) ? 'text-black' : 'text-gray-400'} text-center w-full`}
+					className={`${dottedFretIndexes.includes(index) ? 'text-black' : 'text-gray-400'} text-xs text-center w-full sm:text-base`}
 					key={index}
 				>
 					{index + 1}

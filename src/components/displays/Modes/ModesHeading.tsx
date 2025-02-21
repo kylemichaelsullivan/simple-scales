@@ -4,12 +4,12 @@ type ModesHeadingProps = {
 
 function ModesHeading({ tonicNote }: ModesHeadingProps) {
 	return (
-		<div className='ModesHeading grid grid-cols-8 bg-slate-400 font-semibold'>
-			<div>{tonicNote}</div>
+		<div className='ModesHeading grid grid-cols-17 bg-slate-400 font-semibold'>
+			<div className='col-span-3'>{tonicNote}</div>
 			{Array.from({ length: 7 }, (_, index) => {
 				const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
 				return (
-					<div className='roman-numeral' key={romanNumerals[index]}>
+					<div className='roman-numeral col-span-2' key={romanNumerals[index]}>
 						{romanNumerals[index]}
 					</div>
 				);
