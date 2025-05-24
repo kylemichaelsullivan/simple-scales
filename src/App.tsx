@@ -1,9 +1,9 @@
+import ShowNotes from './components/ShowNotes';
 import UsingFlats from './components/UsingFlats';
 import Title from './components/Title';
 import Scales from './components/scales/Scales';
 import Notes from './components/Notes';
 import Displays from './components/displays/Displays';
-import ShowNotes from './components/ShowNotes';
 
 function App() {
 	return (
