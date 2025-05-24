@@ -14,12 +14,16 @@ function DisplaysSelector() {
 				return (
 					<button
 						type='button'
-						className={`text-2xl ${!isActive ? 'inactive' : ''} hover:ring-1 sm:text-3xl`}
+						className={`flex items-center justify-center rounded-lg p-2 transition-all ${
+							!isActive
+								? 'opacity-30 grayscale hover:opacity-50'
+								: 'opacity-100 hover:brightness-110'
+						}`}
 						title={text}
 						onClick={() => handleDisplaysClick(icon as Displays_Icon)}
 						key={icon}
 					>
-						<Icon icon={icon} />
+						<Icon icon={icon} className='h-8 w-8' />
 					</button>
 				);
 			})}
