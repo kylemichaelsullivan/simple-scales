@@ -6,16 +6,16 @@ import Displays from './components/displays/Displays';
 import ShowNotes from './components/ShowNotes';
 
 function App() {
-  return (
-    <div className="App relative flex flex-col gap-4 bg-sky-300 p-4">
-      <ShowNotes />
-      <UsingFlats />
-      <Title title="Simple Scales" />
-      <Scales />
-      <Notes />
-      <Displays />
-    </div>
-  );
+	return (
+		<div className='App relative flex flex-col gap-4 bg-sky-300 p-4'>
+			<ShowNotes />
+			<UsingFlats />
+			<Title title='Simple Scales' />
+			<Scales />
+			<Notes />
+			<Displays />
+		</div>
+	);
 }
 
 export default App;

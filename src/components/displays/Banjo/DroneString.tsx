@@ -10,7 +10,7 @@ function DroneString({ openNote }: DroneStringProps) {
 	const frets = 6;
 
 	return (
-		<div className={`DroneString flex justify-evenly ml-1`}>
+		<div className={`DroneString ml-1 flex justify-evenly`}>
 			{Array.from({ length: 5 }, (_, i) => (
 				<SkippedFret key={i} />
 			))}
