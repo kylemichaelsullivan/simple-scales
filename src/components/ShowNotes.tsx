@@ -10,7 +10,7 @@ function ShowNotes() {
       title={showNoteLabels ? 'Hide Note Labels' : 'Show Note Labels'}
       onClick={toggleShowNoteLabels}
     >
-      📖
+      {showNoteLabels ? '📖' : '📕'}
     </button>
   );
 }
