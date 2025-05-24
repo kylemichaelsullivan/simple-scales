@@ -7,7 +7,7 @@ import Displays from './components/displays/Displays';
 
 function App() {
 	return (
-		<div className='App relative flex flex-col gap-4 bg-sky-300 p-4'>
+		<div className='App relative flex min-h-screen flex-col gap-4 bg-sky-300 p-4'>
 			<ShowNotes />
 			<UsingFlats />
 			<Title title='Simple Scales' />
