@@ -17,7 +17,11 @@ function Key({ isBlack, note, isAllowed }: KeyProps) {
       onClick={() => playNote(note)}
     >
       {isAllowed && (
-        <AllowedNote note={getNote(note)} isTonic={note === tonic} />
+        <AllowedNote
+          note={getNote(note)}
+          isTonic={note === tonic}
+          isPiano={true}
+        />
       )}
     </div>
   );
