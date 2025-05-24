@@ -54,24 +54,6 @@ select {
 	border-right: 0;
 }
 
-.allowed::after {
-	position: absolute;
-	content: '';
-	background-color: green;
-	border: 1px solid white;
-	border-radius: 50%;
-	width: var(--dot-size);
-	height: var(--dot-size);
-	left: 50%;
-	bottom: 50%;
-	transform: translate(-50%, 50%);
-	z-index: 9;
-}
-
-.allowed:hover::after {
-	border-color: transparent;
-}
-
 .Piano {
 	--width-white: min(calc((100vw - 2rem) / 7), 6.25rem);
 	--width-black: calc(var(--width-white) * 0.6);
@@ -105,11 +87,11 @@ select {
 }
 
 .Guitar {
-	--fretboard-color: red;
+	--fretboard-color: #ff0000;
 }
 
 .Banjo {
-	--fretboard-color: #ffffff;
+	--fretboard-color: #f5f5dc;
 }
 
 .Banjo .String:nth-child(4) .Fret {
@@ -151,6 +133,10 @@ select {
 
 .Ukelele {
 	--fretboard-color: yellow;
+}
+
+.Mandolin {
+	--fretboard-color: #e6d5bc;
 }
 
 /* Utility Classes */

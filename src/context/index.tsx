@@ -46,8 +46,8 @@ const initialUsingFlats: Scale_UsingFlats = true;
 const initialDisplays: Displays_Icon[] = [
 	'/src/icons/keyboard.svg',
 	'/src/icons/guitar.svg',
-	'/src/icons/banjo.svg',
 	'/src/icons/ukelele.svg',
+	'/src/icons/mandolin.svg',
 ];
 const initialShowNoteLabels: boolean = true;
 

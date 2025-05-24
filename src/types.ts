@@ -42,10 +42,17 @@ export type Scale_Variants = 'major' | 'minor' | 'pentatonic' | Scale_Modes;
 export type Scale_UsingFlats = boolean;
 export type Scale_NoteCount = number;
 
-export type Displays_Text = 'Piano' | 'Guitar' | 'Banjo' | 'Ukelele' | 'Modes';
+export type Displays_Text =
+	| 'Piano'
+	| 'Guitar'
+	| 'Banjo'
+	| 'Ukelele'
+	| 'Mandolin'
+	| 'Modes';
 export type Displays_Icon =
 	| '/src/icons/keyboard.svg'
 	| '/src/icons/guitar.svg'
 	| '/src/icons/banjo.svg'
 	| '/src/icons/ukelele.svg'
+	| '/src/icons/mandolin.svg'
 	| '/src/icons/stand.svg';

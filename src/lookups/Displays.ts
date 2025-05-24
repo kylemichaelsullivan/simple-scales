@@ -8,6 +8,7 @@ export const allDisplays: DisplayItem[] = [
 		'/src/icons/guitar.svg': 'Guitar',
 		'/src/icons/banjo.svg': 'Banjo',
 		'/src/icons/ukelele.svg': 'Ukelele',
+		'/src/icons/mandolin.svg': 'Mandolin',
 		'/src/icons/stand.svg': 'Modes',
 	},
 ];
