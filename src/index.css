@@ -3,162 +3,174 @@
 @tailwind utilities;
 
 :root {
-	--dot-size: 0.675rem;
+  --dot-size: 0.675rem;
 }
 
 select {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .DisplaysSelector .inactive {
-	color: transparent;
-	text-shadow: 0 0 0 grey;
+  color: transparent;
+  text-shadow: 0 0 0 grey;
 }
 
 .fretboard {
-	background-color: var(--fretboard-color);
+  background-color: var(--fretboard-color);
 }
 
 .String,
 .DroneString {
-	position: relative;
-	height: 2rem;
-	min-height: 1rem;
+  position: relative;
+  height: 2rem;
+  min-height: 1rem;
 }
 
 .String::after,
 .DroneString::before,
 .DroneString::after {
-	position: absolute;
-	content: '';
-	top: 50%;
-	transform: translateY(-50%);
+  position: absolute;
+  content: '';
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .String::after,
 .DroneString::after {
-	background-color: silver;
-	width: 100%;
-	height: 0.25rem;
-	z-index: 2;
+  background-color: silver;
+  width: 100%;
+  height: 0.25rem;
+  z-index: 2;
 }
 
 .Nut,
 .Fret {
-	position: relative;
-	cursor: pointer;
-	z-index: 3;
+  position: relative;
+  cursor: pointer;
+  z-index: 3;
 }
 
 .Fret:last-child {
-	border-right: 0;
+  border-right: 0;
 }
 
 .allowed::after {
-	position: absolute;
-	content: '';
-	background-color: green;
-	border: 1px solid white;
-	border-radius: 50%;
-	width: var(--dot-size);
-	height: var(--dot-size);
-	left: 50%;
-	bottom: 50%;
-	transform: translate(-50%, 50%);
-	z-index: 9;
+  position: absolute;
+  content: '';
+  background-color: green;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 9;
 }
 
 .allowed:hover::after {
-	border-color: transparent;
+  border-color: transparent;
 }
 
 .Piano {
-	--width-white: min(calc((100vw - 2rem) / 7), 6.25rem);
-	--width-black: calc(var(--width-white) * 0.6);
+  --width-white: min(calc((100vw - 2rem) / 7), 6.25rem);
+  --width-black: calc(var(--width-white) * 0.6);
 }
 
 .Piano .Key {
-	position: relative;
-	cursor: pointer;
-	width: var(--width-white);
-	height: calc(var(--width-white) * 4);
-	max-height: 90vh;
+  position: relative;
+  cursor: pointer;
+  width: var(--width-white);
+  height: calc(var(--width-white) * 4);
+  max-height: 90vh;
 }
 
 .Piano .white {
-	background-color: white;
+  background-color: white;
 }
 
 .Piano .black {
-	--margin: calc(var(--width-black) / -2);
-	background-color: black;
-	width: var(--width-black);
-	height: calc(var(--width-black) * 4);
-	margin-right: var(--margin);
-	margin-left: var(--margin);
-	z-index: 2;
+  --margin: calc(var(--width-black) / -2);
+  background-color: black;
+  width: var(--width-black);
+  height: calc(var(--width-black) * 4);
+  margin-right: var(--margin);
+  margin-left: var(--margin);
+  z-index: 2;
 }
 
 .Piano .allowed::after {
-	bottom: 1rem;
-	transform: translateX(-50%);
+  bottom: 1rem;
+  transform: translateX(-50%);
 }
 
 .Guitar {
-	--fretboard-color: red;
+  --fretboard-color: red;
 }
 
 .Banjo {
-	--fretboard-color: #ffffff;
+  --fretboard-color: #ffffff;
 }
 
 .Banjo .String:nth-child(4) .Fret {
-	border-bottom-width: 1px;
+  border-bottom-width: 1px;
 }
 
 .Banjo .String:nth-child(4) .Fret:nth-child(n + 7) {
-	border-bottom-width: 0;
+  border-bottom-width: 0;
 }
 
 .Banjo .DroneString .SkippedFret {
-	--tw-bg-opacity: 1;
-	border-bottom: 1px solid rgb(125 211 252 / var(--tw-bg-opacity));
-	z-index: 3;
+  --tw-bg-opacity: 1;
+  border-bottom: 1px solid rgb(125 211 252 / var(--tw-bg-opacity));
+  z-index: 3;
 }
 
 .Banjo .DroneString .SkippedFret:first-child {
-	position: relative;
+  position: relative;
 }
 
 .Banjo .DroneString .SkippedFret:first-child::before {
-	--tw-bg-opacity: 1;
-	position: absolute;
-	content: '';
-	background-color: rgb(125 211 252 / var(--tw-bg-opacity));
-	width: 1rem;
-	height: 110%;
-	left: -0.5rem;
-	top: 0;
+  --tw-bg-opacity: 1;
+  position: absolute;
+  content: '';
+  background-color: rgb(125 211 252 / var(--tw-bg-opacity));
+  width: 1rem;
+  height: 110%;
+  left: -0.5rem;
+  top: 0;
 }
 
 .Banjo .DroneString .Nut {
-	left: 0.5px;
+  left: 0.5px;
 }
 
 .Banjo .DroneString .Fret {
-	border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .Ukelele {
-	--fretboard-color: yellow;
+  --fretboard-color: yellow;
 }
 
 /* Utility Classes */
 .grid-cols-17 {
-	grid-template-columns: repeat(17, minmax(0, 1fr));
+  grid-template-columns: repeat(17, minmax(0, 1fr));
 }
 
 .text-xxs {
-	font-size: max(0.5rem, 2.75vw);
-	line-height: 1.25;
+  font-size: 0.675rem;
+}
+
+.text-xxxs {
+  font-size: 0.5rem;
+}
+
+/* camelCase to match React Prop */
+.hasFlat {
+  letter-spacing: -0.1875em;
+}
+
+.hasSharp {
+  letter-spacing: 0em;
 }
