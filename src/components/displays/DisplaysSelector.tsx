@@ -1,26 +1,25 @@
 import { useIndex } from '../../context';
-
 import { allDisplays } from '../../lookups/Displays';
-
-import { Displays_Emoji } from '../../types';
+import { Displays_Icon } from '../../types';
+import Icon from '../Icon';
 
 function DisplaysSelector() {
 	const { displays, handleDisplaysClick } = useIndex();
 
 	return (
 		<div className='DisplaysSelector flex justify-center gap-8'>
-			{Object.entries(allDisplays[0]).map(([emoji, text]) => {
-				const isActive = displays.includes(emoji as Displays_Emoji);
+			{Object.entries(allDisplays[0]).map(([icon, text]) => {
+				const isActive = displays.includes(icon as Displays_Icon);
 
 				return (
 					<button
 						type='button'
 						className={`text-2xl ${!isActive ? 'inactive' : ''} hover:ring-1 sm:text-3xl`}
 						title={text}
-						onClick={() => handleDisplaysClick(emoji as Displays_Emoji)}
-						key={emoji}
+						onClick={() => handleDisplaysClick(icon as Displays_Icon)}
+						key={icon}
 					>
-						{emoji}
+						<Icon icon={icon} />
 					</button>
 				);
 			})}

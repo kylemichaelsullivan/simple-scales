@@ -8,7 +8,7 @@ function Guitar() {
 
 	return (
 		<div className='Guitar flex w-full justify-center'>
-			<Label emoji='🎸' />
+			<Label icon='/src/icons/guitar.svg' />
 			<div className='flex w-full flex-col'>
 				<FretNumbers />
 

@@ -1,18 +1,18 @@
 import { allDisplays } from '../../lookups/Displays';
-
-import { Displays_Emoji } from '../../types';
+import { Displays_Icon } from '../../types';
+import Icon from '../Icon';
 
 type LabelProps = {
-	emoji: Displays_Emoji;
+	icon: Displays_Icon;
 };
 
-function Label({ emoji }: LabelProps) {
+function Label({ icon }: LabelProps) {
 	return (
 		<div
 			className='Label flex cursor-default items-center px-1 text-3xl'
-			title={allDisplays[0][emoji]}
+			title={allDisplays[0][icon]}
 		>
-			{emoji}
+			<Icon icon={icon} />
 		</div>
 	);
 }

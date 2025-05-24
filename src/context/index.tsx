@@ -10,7 +10,7 @@ import type {
 	Scale_Tonics,
 	Scale_Variants,
 	Scale_UsingFlats,
-	Displays_Emoji,
+	Displays_Icon,
 } from '../types';
 
 import { Flats, Sharps, Intervals, Frequencies } from '../lookups/Notes';
@@ -20,11 +20,11 @@ type IndexContextType = {
 	variant: Scale_Variants;
 	usingFlats: Scale_UsingFlats;
 	notes: number[];
-	displays: Displays_Emoji[];
+	displays: Displays_Icon[];
 	showNoteLabels: boolean;
 	handleTonicChange: (tonic: number) => void;
 	handleVariantChange: (variant: Scale_Variants) => void;
-	handleDisplaysClick: (emoji: Displays_Emoji) => void;
+	handleDisplaysClick: (icon: Displays_Icon) => void;
 	capitalizeFirstLetter: (string: string) => string;
 	toggleUsingFlats: () => void;
 	toggleShowNoteLabels: () => void;
@@ -43,7 +43,12 @@ type IndexContextProviderProps = {
 const initialTonic: Scale_Tonics = 0;
 const initialVariant: Scale_Variants = 'major';
 const initialUsingFlats: Scale_UsingFlats = true;
-const initialDisplays: Displays_Emoji[] = ['🎹', '🎸', '🪕', '🏝️'];
+const initialDisplays: Displays_Icon[] = [
+	'/src/icons/keyboard.svg',
+	'/src/icons/guitar.svg',
+	'/src/icons/banjo.svg',
+	'/src/icons/ukelele.svg',
+];
 const initialShowNoteLabels: boolean = true;
 
 export const IndexContextProvider = ({
@@ -54,7 +59,7 @@ export const IndexContextProvider = ({
 	const [usingFlats, setUsingFlats] =
 		useState<Scale_UsingFlats>(initialUsingFlats);
 	const [notes, setNotes] = useState<Scale_Tonics[]>([tonic]);
-	const [displays, setDisplays] = useState<Displays_Emoji[]>(initialDisplays);
+	const [displays, setDisplays] = useState<Displays_Icon[]>(initialDisplays);
 	const [notePlaying, setNotePlaying] = useState<boolean>(false);
 	const [showNoteLabels, setShowNoteLabels] = useState<boolean>(
 		initialShowNoteLabels,
@@ -68,10 +73,10 @@ export const IndexContextProvider = ({
 		setVariant(variant);
 	}
 
-	function handleDisplaysClick(emoji: Displays_Emoji) {
-		const updatedDisplays = displays.includes(emoji)
-			? displays.filter((item) => item !== emoji)
-			: [...displays, emoji];
+	function handleDisplaysClick(icon: Displays_Icon) {
+		const updatedDisplays = displays.includes(icon)
+			? displays.filter((item) => item !== icon)
+			: [...displays, icon];
 
 		setDisplays(updatedDisplays);
 	}

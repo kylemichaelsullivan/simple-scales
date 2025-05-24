@@ -8,7 +8,7 @@ function Ukelele() {
 
 	return (
 		<div className='Ukelele flex w-full justify-center'>
-			<Label emoji='🏝️' />
+			<Label icon='/src/icons/ukelele.svg' />
 			<div className='flex w-full flex-col'>
 				<FretNumbers />
 

@@ -13,11 +13,12 @@ function Displays() {
 	return (
 		<div className='Displays mx-auto flex w-full max-w-screen-2xl flex-col gap-8'>
 			<DisplaysSelector />
-			{displays.includes('🎹') && <Piano />}
-			{displays.includes('🎸') && <Guitar />}
-			{displays.includes('🪕') && <Banjo />}
-			{displays.includes('🏝️') && <Ukelele />}
-			{displays.includes('🎶') && variant !== 'pentatonic' && <Modes />}
+			{displays.includes('/src/icons/keyboard.svg') && <Piano />}
+			{displays.includes('/src/icons/guitar.svg') && <Guitar />}
+			{displays.includes('/src/icons/banjo.svg') && <Banjo />}
+			{displays.includes('/src/icons/ukelele.svg') && <Ukelele />}
+			{displays.includes('/src/icons/stand.svg') &&
+				variant !== 'pentatonic' && <Modes />}
 		</div>
 	);
 }
