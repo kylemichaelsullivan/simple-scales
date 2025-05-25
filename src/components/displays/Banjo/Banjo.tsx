@@ -9,7 +9,7 @@ function Banjo() {
 
 	return (
 		<div className='Banjo flex w-full justify-center'>
-			<Label icon='/src/icons/banjo.svg' />
+			<Label icon='banjo' />
 			<div className='flex w-full flex-col'>
 				<FretNumbers />
 				<div className='fretboard flex w-full flex-col border border-b-0 border-black'>

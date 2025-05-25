@@ -1,7 +1,7 @@
 import { useIndex } from '../../context';
 import { allDisplays } from '../../lookups/Displays';
 import { Displays_Icon } from '../../types';
-import Icon from '../Icon';
+import Icon, { type IconName } from '../Icon';
 
 function DisplaysSelector() {
 	const { displays, handleDisplaysClick } = useIndex();
@@ -23,7 +23,7 @@ function DisplaysSelector() {
 						onClick={() => handleDisplaysClick(icon as Displays_Icon)}
 						key={icon}
 					>
-						<Icon icon={icon} className='h-8 w-8' />
+						<Icon name={icon as IconName} className='h-8 w-8' />
 					</button>
 				);
 			})}

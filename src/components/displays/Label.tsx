@@ -1,20 +1,14 @@
-import { allDisplays } from '../../lookups/Displays';
-import { Displays_Icon } from '../../types';
+import type { IconName } from '../Icon';
 import Icon from '../Icon';
 
-type LabelProps = {
-	icon: Displays_Icon;
-};
+interface LabelProps {
+	icon: IconName;
+}
 
-function Label({ icon }: LabelProps) {
+export default function Label({ icon }: LabelProps) {
 	return (
-		<div
-			className='Label -ml-2 mr-2 flex cursor-default items-center px-1 text-3xl'
-			title={allDisplays[0][icon]}
-		>
-			<Icon icon={icon} />
+		<div className='Label flex items-center gap-2'>
+			<Icon name={icon} className='h-6 w-6' />
 		</div>
 	);
 }
-
-export default Label;

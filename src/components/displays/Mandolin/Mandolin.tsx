@@ -8,7 +8,7 @@ function Mandolin() {
 
 	return (
 		<div className='Mandolin flex w-full justify-center'>
-			<Label icon='/src/icons/mandolin.svg' />
+			<Label icon='mandolin' />
 			<div className='flex w-full flex-col'>
 				<FretNumbers />
 

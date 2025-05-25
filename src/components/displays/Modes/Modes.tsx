@@ -11,26 +11,32 @@ function Modes() {
 
 	const tonicNote = getNote(tonic);
 
-	const generateModes = (tonic: number) => {
-		const modes = Object.keys(Intervals).filter(
-			(key) => key !== 'major' && key !== 'minor' && key !== 'pentatonic',
-		) as Array<keyof typeof Intervals>;
+	const generateModes = useMemo(
+		() => (tonic: number) => {
+			const modes = Object.keys(Intervals).filter(
+				(key) => key !== 'major' && key !== 'minor' && key !== 'pentatonic',
+			) as Array<keyof typeof Intervals>;
 
-		return modes.map((mode) => {
-			const intervals = Intervals[mode] as number[];
-			const modeNotes: number[] = [tonic];
+			return modes.map((mode) => {
+				const intervals = Intervals[mode] as number[];
+				const modeNotes: number[] = [tonic];
 
-			let currentNote = tonic;
-			intervals.forEach((interval) => {
-				currentNote += interval * 2;
-				modeNotes.push(currentNote % 12);
+				let currentNote = tonic;
+				intervals.forEach((interval) => {
+					currentNote += interval * 2;
+					modeNotes.push(currentNote % 12);
+				});
+
+				return { mode, notes: modeNotes.map(getNote) };
 			});
+		},
+		[getNote],
+	);
 
-			return { mode, notes: modeNotes.map(getNote) };
-		});
-	};
-
-	const modes = useMemo(() => generateModes(tonic), [tonic, usingFlats]);
+	const modes = useMemo(
+		() => generateModes(tonic),
+		[tonic, usingFlats, generateModes],
+	);
 
 	return (
 		<div className='Modes border border-slate-500 text-center capitalize shadow-md'>

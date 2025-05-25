@@ -15,13 +15,12 @@ function Displays() {
 	return (
 		<div className='Displays mx-auto flex w-full max-w-screen-2xl flex-col gap-8'>
 			<DisplaysSelector />
-			{displays.includes('/src/icons/keyboard.svg') && <Piano />}
-			{displays.includes('/src/icons/guitar.svg') && <Guitar />}
-			{displays.includes('/src/icons/banjo.svg') && <Banjo />}
-			{displays.includes('/src/icons/ukelele.svg') && <Ukelele />}
-			{displays.includes('/src/icons/mandolin.svg') && <Mandolin />}
-			{displays.includes('/src/icons/stand.svg') &&
-				variant !== 'pentatonic' && <Modes />}
+			{displays.includes('keyboard') && <Piano />}
+			{displays.includes('guitar') && <Guitar />}
+			{displays.includes('banjo') && <Banjo />}
+			{displays.includes('ukelele') && <Ukelele />}
+			{displays.includes('mandolin') && <Mandolin />}
+			{displays.includes('stand') && variant !== 'pentatonic' && <Modes />}
 		</div>
 	);
 }

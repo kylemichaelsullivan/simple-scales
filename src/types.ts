@@ -1,3 +1,5 @@
+import type { IconName } from './components/Icon';
+
 export type Notes_Flats =
 	| 'C'
 	| 'D♭'
@@ -49,10 +51,4 @@ export type Displays_Text =
 	| 'Ukelele'
 	| 'Mandolin'
 	| 'Modes';
-export type Displays_Icon =
-	| '/src/icons/keyboard.svg'
-	| '/src/icons/guitar.svg'
-	| '/src/icons/banjo.svg'
-	| '/src/icons/ukelele.svg'
-	| '/src/icons/mandolin.svg'
-	| '/src/icons/stand.svg';
+export type Displays_Icon = IconName;

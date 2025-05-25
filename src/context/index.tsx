@@ -44,10 +44,10 @@ const initialTonic: Scale_Tonics = 0;
 const initialVariant: Scale_Variants = 'major';
 const initialUsingFlats: Scale_UsingFlats = true;
 const initialDisplays: Displays_Icon[] = [
-	'/src/icons/keyboard.svg',
-	'/src/icons/guitar.svg',
-	'/src/icons/ukelele.svg',
-	'/src/icons/mandolin.svg',
+	'keyboard',
+	'guitar',
+	'ukelele',
+	'mandolin',
 ];
 const initialShowNoteLabels: boolean = true;
 
@@ -116,9 +116,7 @@ export const IndexContextProvider = ({
 	}
 
 	function playNote(note: number) {
-		window.AudioContext = window.AudioContext;
 		const context = new AudioContext();
-
 		const oscillator = context.createOscillator();
 		oscillator.type = 'sine';
 		oscillator.frequency.value = getFrequency(note);
@@ -131,6 +129,8 @@ export const IndexContextProvider = ({
 
 		setTimeout(() => {
 			oscillator.stop();
+			oscillator.disconnect();
+			context.close();
 			setNotePlaying(false);
 		}, 1000);
 	}

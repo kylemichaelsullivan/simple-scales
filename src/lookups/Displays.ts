@@ -4,11 +4,11 @@ type DisplayItem = Record<Displays_Icon, Displays_Text>;
 
 export const allDisplays: DisplayItem[] = [
 	{
-		'/src/icons/keyboard.svg': 'Piano',
-		'/src/icons/guitar.svg': 'Guitar',
-		'/src/icons/banjo.svg': 'Banjo',
-		'/src/icons/ukelele.svg': 'Ukelele',
-		'/src/icons/mandolin.svg': 'Mandolin',
-		'/src/icons/stand.svg': 'Modes',
+		keyboard: 'Piano',
+		guitar: 'Guitar',
+		banjo: 'Banjo',
+		ukelele: 'Ukelele',
+		mandolin: 'Mandolin',
+		stand: 'Modes',
 	},
 ];

@@ -1,21 +1,28 @@
-import { type ReactNode } from 'react';
+import keyboardIcon from '/icons/keyboard.svg';
+import guitarIcon from '/icons/guitar.svg';
+import banjoIcon from '/icons/banjo.svg';
+import ukeleleIcon from '/icons/ukelele.svg';
+import mandolinIcon from '/icons/mandolin.svg';
+import standIcon from '/icons/stand.svg';
 
-type IconProps = {
-	icon: string;
+const iconMap = {
+	keyboard: keyboardIcon,
+	guitar: guitarIcon,
+	banjo: banjoIcon,
+	ukelele: ukeleleIcon,
+	mandolin: mandolinIcon,
+	stand: standIcon,
+} as const;
+
+type IconName = keyof typeof iconMap;
+
+interface IconProps {
+	name: IconName;
 	className?: string;
-};
-
-function Icon({ icon = '', className = '' }: IconProps): ReactNode {
-	if (!icon) {
-		return null;
-	}
-
-	if (icon.startsWith('/src/icons/')) {
-		return (
-			<img src={icon} alt='' className={`inline-block h-6 w-6 ${className}`} />
-		);
-	}
-	return <span className={className}>{icon}</span>;
 }
 
-export default Icon;
+export default function Icon({ name, className = '' }: IconProps) {
+	return <img src={iconMap[name]} alt={name} className={className} />;
+}
+
+export type { IconName };

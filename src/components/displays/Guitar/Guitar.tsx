@@ -8,7 +8,7 @@ function Guitar() {
 
 	return (
 		<div className='Guitar flex w-full justify-center'>
-			<Label icon='/src/icons/guitar.svg' />
+			<Label icon='guitar' />
 			<div className='flex w-full flex-col'>
 				<FretNumbers />
 
