@@ -7,8 +7,8 @@ function Ukelele() {
 	const openNotes = [9, 4, 0, 7];
 
 	return (
-		<div className='Ukelele flex w-full justify-center'>
-			<Label icon='ukelele' />
+		<div className='Ukelele flex w-full justify-center gap-2'>
+			<Label icon='ukelele' title='Ukelele' />
 			<div className='flex w-full flex-col'>
 				<FretNumbers />
 

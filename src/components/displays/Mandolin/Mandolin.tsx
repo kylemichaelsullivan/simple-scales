@@ -7,8 +7,8 @@ function Mandolin() {
 	const openNotes = [4, 9, 2, 7];
 
 	return (
-		<div className='Mandolin flex w-full justify-center'>
-			<Label icon='mandolin' />
+		<div className='Mandolin flex w-full justify-center gap-2'>
+			<Label icon='mandolin' title='Mandolin' />
 			<div className='flex w-full flex-col'>
 				<FretNumbers />
 

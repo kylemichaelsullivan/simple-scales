@@ -7,8 +7,8 @@ function Guitar() {
 	const openNotes = [4, 11, 7, 2, 9, 4];
 
 	return (
-		<div className='Guitar flex w-full justify-center'>
-			<Label icon='guitar' />
+		<div className='Guitar flex w-full justify-center gap-2'>
+			<Label icon='guitar' title='Guitar' />
 			<div className='flex w-full flex-col'>
 				<FretNumbers />
 
