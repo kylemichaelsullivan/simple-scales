@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 import { IndexContextProvider } from './context/index.tsx';
 
-import App from './App.tsx';
+import App from './components/App.tsx';
 
 import './index.css';
 
