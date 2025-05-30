@@ -1,5 +1,5 @@
-import ShowNotes from './components/ShowNotes';
-import UsingFlats from './components/UsingFlats';
+import ShowNotes from './components/buttons/ShowNotes';
+import UsingFlats from './components/buttons/UsingFlats';
 import Title from './components/Title';
 import Scales from './components/scales/Scales';
 import Notes from './components/Notes';

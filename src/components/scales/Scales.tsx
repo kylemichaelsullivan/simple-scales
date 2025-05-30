@@ -1,6 +1,6 @@
 import Scale from './Scale';
-import TransposeDown from '../TransposeDown';
-import TransposeUp from '../TransposeUp';
+import TransposeDown from '../buttons/TransposeDown';
+import TransposeUp from '../buttons/TransposeUp';
 
 function Scales() {
 	return (
