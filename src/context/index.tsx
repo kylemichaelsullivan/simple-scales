@@ -58,14 +58,22 @@ export const IndexContextProvider = ({
 }: IndexContextProviderProps) => {
 	const [tonic, setTonic] = useState<Scale_Tonics>(initialTonic);
 	const [variant, setVariant] = useState<Scale_Variants>(initialVariant);
-	const [usingFlats, setUsingFlats] =
-		useState<Scale_UsingFlats>(initialUsingFlats);
+	const [usingFlats, setUsingFlats] = useState<Scale_UsingFlats>(() => {
+		const savedUsingFlats = localStorage.getItem('usingFlats');
+		return savedUsingFlats ? JSON.parse(savedUsingFlats) : initialUsingFlats;
+	});
 	const [notes, setNotes] = useState<Scale_Tonics[]>([tonic]);
-	const [displays, setDisplays] = useState<Displays_Icon[]>(initialDisplays);
+	const [displays, setDisplays] = useState<Displays_Icon[]>(() => {
+		const savedDisplays = localStorage.getItem('selectedDisplays');
+		return savedDisplays ? JSON.parse(savedDisplays) : initialDisplays;
+	});
 	const [notePlaying, setNotePlaying] = useState<boolean>(false);
-	const [showNoteLabels, setShowNoteLabels] = useState<boolean>(
-		initialShowNoteLabels,
-	);
+	const [showNoteLabels, setShowNoteLabels] = useState<boolean>(() => {
+		const savedShowNoteLabels = localStorage.getItem('showNoteLabels');
+		return savedShowNoteLabels
+			? JSON.parse(savedShowNoteLabels)
+			: initialShowNoteLabels;
+	});
 
 	const handleTonicChange = useCallback((tonic: Scale_Tonics) => {
 		setTonic(tonic);
@@ -76,19 +84,29 @@ export const IndexContextProvider = ({
 	}, []);
 
 	const handleDisplaysClick = useCallback((icon: Displays_Icon) => {
-		setDisplays((prev) =>
-			prev.includes(icon)
+		setDisplays((prev) => {
+			const newDisplays = prev.includes(icon)
 				? prev.filter((item) => item !== icon)
-				: [...prev, icon],
-		);
+				: [...prev, icon];
+			localStorage.setItem('selectedDisplays', JSON.stringify(newDisplays));
+			return newDisplays;
+		});
 	}, []);
 
 	const toggleUsingFlats = useCallback(() => {
-		setUsingFlats((prev) => !prev);
+		setUsingFlats((prev) => {
+			const newValue = !prev;
+			localStorage.setItem('usingFlats', JSON.stringify(newValue));
+			return newValue;
+		});
 	}, []);
 
 	const toggleShowNoteLabels = useCallback(() => {
-		setShowNoteLabels((prev) => !prev);
+		setShowNoteLabels((prev) => {
+			const newValue = !prev;
+			localStorage.setItem('showNoteLabels', JSON.stringify(newValue));
+			return newValue;
+		});
 	}, []);
 
 	const capitalizeFirstLetter = useCallback((string: string) => {
