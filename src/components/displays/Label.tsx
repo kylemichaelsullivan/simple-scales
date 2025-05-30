@@ -13,7 +13,7 @@ export default function Label({ icon, title }: LabelProps) {
 			title={title}
 		>
 			<Icon name={icon} className='h-6 w-6' />
-			<span className='text-sm font-bold'>{title}</span>
+			<span className='hidden text-xs font-bold sm:block'>{title}</span>
 		</div>
 	);
 }
