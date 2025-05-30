@@ -3,6 +3,8 @@ import {
 	useEffect,
 	createContext,
 	useContext,
+	useCallback,
+	useMemo,
 	type ReactNode,
 } from 'react';
 
@@ -65,84 +67,93 @@ export const IndexContextProvider = ({
 		initialShowNoteLabels,
 	);
 
-	function handleTonicChange(tonic: Scale_Tonics) {
+	const handleTonicChange = useCallback((tonic: Scale_Tonics) => {
 		setTonic(tonic);
-	}
+	}, []);
 
-	function handleVariantChange(variant: Scale_Variants) {
+	const handleVariantChange = useCallback((variant: Scale_Variants) => {
 		setVariant(variant);
-	}
+	}, []);
 
-	function handleDisplaysClick(icon: Displays_Icon) {
-		const updatedDisplays = displays.includes(icon)
-			? displays.filter((item) => item !== icon)
-			: [...displays, icon];
+	const handleDisplaysClick = useCallback((icon: Displays_Icon) => {
+		setDisplays((prev) =>
+			prev.includes(icon)
+				? prev.filter((item) => item !== icon)
+				: [...prev, icon],
+		);
+	}, []);
 
-		setDisplays(updatedDisplays);
-	}
+	const toggleUsingFlats = useCallback(() => {
+		setUsingFlats((prev) => !prev);
+	}, []);
 
-	function toggleUsingFlats() {
-		setUsingFlats(!usingFlats);
-	}
+	const toggleShowNoteLabels = useCallback(() => {
+		setShowNoteLabels((prev) => !prev);
+	}, []);
 
-	function toggleShowNoteLabels() {
-		setShowNoteLabels(!showNoteLabels);
-	}
-
-	function capitalizeFirstLetter(string: string) {
+	const capitalizeFirstLetter = useCallback((string: string) => {
 		return string.charAt(0).toUpperCase() + string.slice(1);
-	}
+	}, []);
 
-	function getNote(note: number) {
-		const scale = usingFlats ? Flats : Sharps;
-		return scale[note];
-	}
+	const getNote = useCallback(
+		(note: number) => {
+			const scale = usingFlats ? Flats : Sharps;
+			return scale[note];
+		},
+		[usingFlats],
+	);
 
-	function makeScale(tonic: Scale_Tonics, variant: Scale_Variants) {
-		const scaleNotes: Scale_Tonics[] = [tonic];
-		const intervals = Intervals[variant];
-		let currentNote = tonic;
+	const makeScale = useCallback(
+		(tonic: Scale_Tonics, variant: Scale_Variants) => {
+			const scaleNotes: Scale_Tonics[] = [tonic];
+			const intervals = Intervals[variant];
+			let currentNote = tonic;
 
-		intervals.map((interval) => {
-			currentNote = (currentNote + interval * 2) % 12;
-			scaleNotes.push(currentNote);
-		});
+			intervals.forEach((interval) => {
+				currentNote = (currentNote + interval * 2) % 12;
+				scaleNotes.push(currentNote);
+			});
 
-		setNotes(scaleNotes);
-	}
+			setNotes(scaleNotes);
+		},
+		[],
+	);
 
-	function getFrequency(note: number) {
+	const getFrequency = useCallback((note: number) => {
 		return Frequencies[note];
-	}
+	}, []);
 
-	function playNote(note: number) {
-		const context = new AudioContext();
-		const oscillator = context.createOscillator();
-		oscillator.type = 'sine';
-		oscillator.frequency.value = getFrequency(note);
-		oscillator.connect(context.destination);
+	const playNote = useCallback(
+		(note: number) => {
+			const context = new AudioContext();
+			const oscillator = context.createOscillator();
+			oscillator.type = 'sine';
+			oscillator.frequency.value = getFrequency(note);
+			oscillator.connect(context.destination);
 
-		if (!notePlaying) {
-			oscillator.start();
-			setNotePlaying(true);
-		}
+			if (!notePlaying) {
+				oscillator.start();
+				setNotePlaying(true);
+			}
 
-		setTimeout(() => {
-			oscillator.stop();
-			oscillator.disconnect();
-			context.close();
-			setNotePlaying(false);
-		}, 1000);
-	}
+			setTimeout(() => {
+				oscillator.stop();
+				oscillator.disconnect();
+				context.close();
+				setNotePlaying(false);
+			}, 1000);
+		},
+		[getFrequency, notePlaying],
+	);
 
-	function reset() {
+	const reset = useCallback(() => {
 		setTonic(initialTonic);
 		setVariant(initialVariant);
-	}
+	}, []);
 
 	useEffect(() => {
 		makeScale(tonic, variant);
-	}, [tonic, variant]);
+	}, [tonic, variant, makeScale]);
 
 	useEffect(() => {
 		const handleKeyUp = (e: KeyboardEvent) => {
@@ -156,29 +167,49 @@ export const IndexContextProvider = ({
 		return () => {
 			window.removeEventListener('keyup', handleKeyUp);
 		};
-	}, []);
+	}, [reset]);
+
+	const contextValue = useMemo(
+		() => ({
+			tonic,
+			variant,
+			usingFlats,
+			notes,
+			displays,
+			showNoteLabels,
+			handleTonicChange,
+			handleVariantChange,
+			handleDisplaysClick,
+			toggleUsingFlats,
+			toggleShowNoteLabels,
+			capitalizeFirstLetter,
+			getNote,
+			makeScale,
+			playNote,
+			reset,
+		}),
+		[
+			tonic,
+			variant,
+			usingFlats,
+			notes,
+			displays,
+			showNoteLabels,
+			handleTonicChange,
+			handleVariantChange,
+			handleDisplaysClick,
+			toggleUsingFlats,
+			toggleShowNoteLabels,
+			capitalizeFirstLetter,
+			getNote,
+			makeScale,
+			playNote,
+			reset,
+		],
+	);
 
 	return (
-		<IndexContext.Provider
-			value={{
-				tonic,
-				variant,
-				usingFlats,
-				notes,
-				displays,
-				showNoteLabels,
-				handleTonicChange,
-				handleVariantChange,
-				handleDisplaysClick,
-				toggleUsingFlats,
-				toggleShowNoteLabels,
-				capitalizeFirstLetter,
-				getNote,
-				makeScale,
-				playNote,
-				reset,
-			}}
-		>
+		<IndexContext.Provider value={contextValue}>
 			{children}
 		</IndexContext.Provider>
 	);
