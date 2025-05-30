@@ -1,4 +1,4 @@
-import { useIndex } from '../../context';
+import { useIndex } from '@/context';
 
 function ShowNotes() {
 	const { showNoteLabels, toggleShowNoteLabels } = useIndex();

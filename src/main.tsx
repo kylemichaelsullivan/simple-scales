@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { IndexContextProvider } from './context/index.tsx';
+import { IndexContextProvider } from '@/context/index';
 
-import App from './components/App.tsx';
+import App from '@/components/App';
 
 import './index.css';
 

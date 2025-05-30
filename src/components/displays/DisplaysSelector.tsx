@@ -1,9 +1,9 @@
-import { useIndex } from '../../context';
-import { allDisplays } from '../../lookups/Displays';
+import { useIndex } from '@/context';
+import { allDisplays } from '@/lookups/Displays';
 
 import DisplaySelector from './DisplaySelector';
 
-import type { Displays_Icon } from '../../types';
+import type { Displays_Icon } from '@/types';
 
 function DisplaysSelector() {
 	const { displays, handleDisplaysClick } = useIndex();

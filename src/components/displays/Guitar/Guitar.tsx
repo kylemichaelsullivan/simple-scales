@@ -1,9 +1,9 @@
-import Label from '../Label';
-import FretNumbers from '../FretNumbers';
-import String from '../String';
+import Label from '@/components/displays/Label';
+import FretNumbers from '@/components/displays/FretNumbers';
+import String from '@/components/displays/String';
 
 function Guitar() {
-	// E B G D A E
+	// E A D G B E
 	const openNotes = [4, 11, 7, 2, 9, 4];
 
 	return (

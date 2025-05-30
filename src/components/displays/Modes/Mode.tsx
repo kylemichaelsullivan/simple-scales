@@ -1,4 +1,4 @@
-import type { Scale_Modes, Scale_Variants } from '../../../types';
+import type { Scale_Modes, Scale_Variants } from '@/types';
 
 type ModeProps = {
 	mode: Scale_Modes | Scale_Variants;

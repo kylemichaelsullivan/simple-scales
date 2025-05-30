@@ -1,5 +1,6 @@
-import { useIndex } from '../../../context';
-import AllowedNote from '../../AllowedNote';
+import { useIndex } from '@/context';
+
+import AllowedNote from '@/components/AllowedNote';
 
 type KeyProps = {
 	isBlack: boolean;

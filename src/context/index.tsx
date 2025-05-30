@@ -6,14 +6,14 @@ import {
 	type ReactNode,
 } from 'react';
 
+import { Flats, Sharps, Intervals, Frequencies } from '@/lookups/Notes';
+
 import type {
 	Scale_Tonics,
 	Scale_Variants,
 	Scale_UsingFlats,
 	Displays_Icon,
-} from '../types';
-
-import { Flats, Sharps, Intervals, Frequencies } from '../lookups/Notes';
+} from '@/types';
 
 type IndexContextType = {
 	tonic: Scale_Tonics;

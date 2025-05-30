@@ -1,9 +1,9 @@
-import Label from '../Label';
-import FretNumbers from '../FretNumbers';
-import String from '../String';
+import Label from '@/components/displays/Label';
+import FretNumbers from '@/components/displays/FretNumbers';
+import String from '@/components/displays/String';
 
 function Ukelele() {
-	// A E C G
+	// G C E A
 	const openNotes = [9, 4, 0, 7];
 
 	return (

@@ -1,4 +1,4 @@
-import type { Displays_Icon, Displays_Text } from '../types';
+import type { Displays_Icon, Displays_Text } from '@/types';
 
 type DisplayItem = Record<Displays_Icon, Displays_Text>;
 

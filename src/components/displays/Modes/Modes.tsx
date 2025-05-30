@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
-import { useIndex } from '../../../context';
-import { Intervals } from '../../../lookups/Notes';
+import { useIndex } from '@/context';
+import { Intervals } from '@/lookups/Notes';
 
 import ModesHeading from './ModesHeading';
 import Mode from './Mode';

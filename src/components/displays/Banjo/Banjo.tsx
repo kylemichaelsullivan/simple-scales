@@ -1,10 +1,10 @@
-import Label from '../Label';
-import FretNumbers from '../FretNumbers';
-import String from '../String';
+import Label from '@/components/displays/Label';
+import FretNumbers from '@/components/displays/FretNumbers';
+import String from '@/components/displays/String';
 import DroneString from './DroneString';
 
 function Banjo() {
-	// D B G D
+	// [G] D B G D
 	const openNotes = [2, 11, 7, 2];
 
 	return (

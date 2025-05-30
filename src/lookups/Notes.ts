@@ -1,4 +1,4 @@
-import type { Notes_Flats, Notes_Sharps } from './../types';
+import type { Notes_Flats, Notes_Sharps } from '@/types';
 
 export const Flats: Notes_Flats[] = [
 	'C',

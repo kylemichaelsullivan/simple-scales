@@ -1,4 +1,4 @@
-import { useIndex } from '../../context';
+import { useIndex } from '@/context';
 
 import Piano from './Piano/Piano';
 import Guitar from './Guitar/Guitar';

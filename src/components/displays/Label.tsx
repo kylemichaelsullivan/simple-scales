@@ -1,5 +1,5 @@
-import type { IconName } from '../Icon';
-import Icon from '../Icon';
+import type { IconName } from '@/components/Icon';
+import Icon from '@/components/Icon';
 
 interface LabelProps {
 	icon: IconName;

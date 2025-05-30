@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { useIndex } from '../context';
+import { useIndex } from '@/context';
 
-import type { Scale_NoteCount } from '../types';
+import { Intervals } from '@/lookups/Notes';
 
-import { Intervals } from '../lookups/Notes';
+import type { Scale_NoteCount } from '@/types';
 
 function Notes() {
 	const { variant, notes, getNote } = useIndex();

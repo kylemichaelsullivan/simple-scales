@@ -1,5 +1,5 @@
-import Nut from '../Nut';
-import Fret from '../Fret';
+import Nut from '@/components/displays/Nut';
+import Fret from '@/components/displays/Fret';
 import SkippedFret from './SkippedFret';
 
 type DroneStringProps = {

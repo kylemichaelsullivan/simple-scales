@@ -1,6 +1,6 @@
-import { useIndex } from '../../context';
+import { useIndex } from '@/context';
 
-import AllowedNote from '../AllowedNote';
+import AllowedNote from '@/components/AllowedNote';
 
 type NutProps = {
 	note: number;

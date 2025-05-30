@@ -1,4 +1,4 @@
-import { useIndex } from '../../../context';
+import { useIndex } from '@/context';
 
 import Key from './Key';
 
