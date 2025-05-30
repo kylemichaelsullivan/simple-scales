@@ -1,7 +1,5 @@
 import { useIndex } from '../../context';
 
-import DisplaysSelector from './DisplaysSelector';
-
 import Piano from './Piano/Piano';
 import Guitar from './Guitar/Guitar';
 import Banjo from './Banjo/Banjo';
@@ -14,7 +12,6 @@ function Displays() {
 
 	return (
 		<div className='Displays mx-auto flex w-full max-w-screen-2xl flex-col gap-8'>
-			<DisplaysSelector />
 			{displays.includes('keyboard') && <Piano />}
 			{displays.includes('guitar') && <Guitar />}
 			{displays.includes('banjo') && <Banjo />}

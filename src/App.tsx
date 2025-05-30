@@ -3,6 +3,7 @@ import UsingFlats from './components/UsingFlats';
 import Title from './components/Title';
 import Scales from './components/scales/Scales';
 import Notes from './components/Notes';
+import DisplaysSelector from './components/displays/DisplaysSelector';
 import Displays from './components/displays/Displays';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 			<Title title='Simple Scales' />
 			<Scales />
 			<Notes />
+			<DisplaysSelector />
 			<Displays />
 		</div>
 	);
