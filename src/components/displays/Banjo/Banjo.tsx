@@ -8,7 +8,7 @@ function Banjo() {
 	const openNotes = [2, 11, 7, 2];
 
 	return (
-		<div className='Banjo flex w-full justify-center gap-2'>
+		<div className='Banjo flex w-full justify-center gap-2 sm:gap-4'>
 			<Label icon='banjo' title='Banjo' />
 			<div className='flex w-full flex-col'>
 				<FretNumbers />
