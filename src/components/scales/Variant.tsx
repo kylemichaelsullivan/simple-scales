@@ -1,5 +1,6 @@
-import { useIndex } from '../../context';
-import { Scale_Variants } from '../../types';
+import { Scale_Variants } from '@/types';
+
+import { useIndex } from '@/context';
 
 function Variant() {
 	const { variant, handleVariantChange, capitalizeFirstLetter } = useIndex();

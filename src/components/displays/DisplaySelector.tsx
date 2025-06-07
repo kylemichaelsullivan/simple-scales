@@ -1,4 +1,5 @@
-import { Displays_Icon } from '../../types';
+import { Displays_Icon } from '@/types';
+
 import Icon, { type IconName } from '../Icon';
 
 interface DisplaySelectorProps {
