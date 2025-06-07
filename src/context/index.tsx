@@ -53,27 +53,61 @@ const initialDisplays: Displays_Icon[] = [
 ];
 const initialShowNoteLabels: boolean = true;
 
+const useLocalStorage = <T,>(
+	key: string,
+	initialValue: T,
+): [T, (value: T | ((prev: T) => T)) => void] => {
+	const [storedValue, setStoredValue] = useState<T>(() => {
+		try {
+			const item = localStorage.getItem(key);
+			return item ? JSON.parse(item) : initialValue;
+		} catch (error) {
+			console.error(error);
+			return initialValue;
+		}
+	});
+
+	const setValue = useCallback(
+		(value: T | ((prev: T) => T)) => {
+			try {
+				setStoredValue((prev) => {
+					const newValue =
+						typeof value === 'function'
+							? (value as (prev: T) => T)(prev)
+							: value;
+					localStorage.setItem(key, JSON.stringify(newValue));
+					return newValue;
+				});
+			} catch (error) {
+				console.error(error);
+			}
+		},
+		[key],
+	);
+
+	return [storedValue, setValue];
+};
+
 export const IndexContextProvider = ({
 	children,
 }: IndexContextProviderProps) => {
 	const [tonic, setTonic] = useState<Scale_Tonics>(initialTonic);
 	const [variant, setVariant] = useState<Scale_Variants>(initialVariant);
-	const [usingFlats, setUsingFlats] = useState<Scale_UsingFlats>(() => {
-		const savedUsingFlats = localStorage.getItem('usingFlats');
-		return savedUsingFlats ? JSON.parse(savedUsingFlats) : initialUsingFlats;
-	});
+	const [usingFlats, setUsingFlats] = useLocalStorage<Scale_UsingFlats>(
+		'usingFlats',
+		initialUsingFlats,
+	);
 	const [notes, setNotes] = useState<Scale_Tonics[]>([tonic]);
-	const [displays, setDisplays] = useState<Displays_Icon[]>(() => {
-		const savedDisplays = localStorage.getItem('selectedDisplays');
-		return savedDisplays ? JSON.parse(savedDisplays) : initialDisplays;
-	});
+	const [displays, setDisplays] = useLocalStorage<Displays_Icon[]>(
+		'selectedDisplays',
+		initialDisplays,
+	);
 	const [notePlaying, setNotePlaying] = useState<boolean>(false);
-	const [showNoteLabels, setShowNoteLabels] = useState<boolean>(() => {
-		const savedShowNoteLabels = localStorage.getItem('showNoteLabels');
-		return savedShowNoteLabels
-			? JSON.parse(savedShowNoteLabels)
-			: initialShowNoteLabels;
-	});
+	const [showNoteLabels, setShowNoteLabels] = useLocalStorage<boolean>(
+		'showNoteLabels',
+		initialShowNoteLabels,
+	);
+	const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
 
 	const handleTonicChange = useCallback((tonic: Scale_Tonics) => {
 		setTonic(tonic);
@@ -84,47 +118,83 @@ export const IndexContextProvider = ({
 	}, []);
 
 	const handleDisplaysClick = useCallback((icon: Displays_Icon) => {
-		setDisplays((prev) => {
+		setDisplays((prev: Displays_Icon[]) => {
 			const newDisplays = prev.includes(icon)
-				? prev.filter((item) => item !== icon)
+				? prev.filter((item: Displays_Icon) => item !== icon)
 				: [...prev, icon];
-			localStorage.setItem('selectedDisplays', JSON.stringify(newDisplays));
 			return newDisplays;
 		});
 	}, []);
 
 	const toggleUsingFlats = useCallback(() => {
-		setUsingFlats((prev) => {
-			const newValue = !prev;
-			localStorage.setItem('usingFlats', JSON.stringify(newValue));
-			return newValue;
-		});
+		setUsingFlats((prev) => !prev);
 	}, []);
 
 	const toggleShowNoteLabels = useCallback(() => {
-		setShowNoteLabels((prev) => {
-			const newValue = !prev;
-			localStorage.setItem('showNoteLabels', JSON.stringify(newValue));
-			return newValue;
-		});
+		setShowNoteLabels((prev: boolean) => !prev);
 	}, []);
 
 	const capitalizeFirstLetter = useCallback((string: string) => {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	}, []);
 
+	const currentScale = useMemo(() => {
+		return usingFlats ? Flats : Sharps;
+	}, [usingFlats]);
+
+	const currentIntervals = useMemo(() => {
+		return Intervals[variant];
+	}, [variant]);
+
+	const getFrequency = useCallback((note: number) => {
+		return Frequencies[note];
+	}, []);
+
+	useEffect(() => {
+		const context = new AudioContext();
+		setAudioContext(context);
+		return () => {
+			context.close();
+		};
+	}, []);
+
+	const playNote = useCallback(
+		(note: number) => {
+			if (!audioContext || notePlaying) return;
+
+			const oscillator = audioContext.createOscillator();
+			oscillator.type = 'sine';
+			oscillator.frequency.value = getFrequency(note);
+			oscillator.connect(audioContext.destination);
+
+			oscillator.start();
+			setNotePlaying(true);
+
+			setTimeout(() => {
+				oscillator.stop();
+				oscillator.disconnect();
+				setNotePlaying(false);
+			}, 1000);
+		},
+		[audioContext, getFrequency, notePlaying],
+	);
+
+	const reset = useCallback(() => {
+		setTonic(initialTonic);
+		setVariant(initialVariant);
+	}, []);
+
 	const getNote = useCallback(
 		(note: number) => {
-			const scale = usingFlats ? Flats : Sharps;
-			return scale[note];
+			return currentScale[note];
 		},
-		[usingFlats],
+		[currentScale],
 	);
 
 	const makeScale = useCallback(
-		(tonic: Scale_Tonics, variant: Scale_Variants) => {
+		(tonic: Scale_Tonics) => {
 			const scaleNotes: Scale_Tonics[] = [tonic];
-			const intervals = Intervals[variant];
+			const intervals = currentIntervals;
 			let currentNote = tonic;
 
 			intervals.forEach((interval) => {
@@ -134,44 +204,12 @@ export const IndexContextProvider = ({
 
 			setNotes(scaleNotes);
 		},
-		[],
+		[currentIntervals],
 	);
-
-	const getFrequency = useCallback((note: number) => {
-		return Frequencies[note];
-	}, []);
-
-	const playNote = useCallback(
-		(note: number) => {
-			const context = new AudioContext();
-			const oscillator = context.createOscillator();
-			oscillator.type = 'sine';
-			oscillator.frequency.value = getFrequency(note);
-			oscillator.connect(context.destination);
-
-			if (!notePlaying) {
-				oscillator.start();
-				setNotePlaying(true);
-			}
-
-			setTimeout(() => {
-				oscillator.stop();
-				oscillator.disconnect();
-				context.close();
-				setNotePlaying(false);
-			}, 1000);
-		},
-		[getFrequency, notePlaying],
-	);
-
-	const reset = useCallback(() => {
-		setTonic(initialTonic);
-		setVariant(initialVariant);
-	}, []);
 
 	useEffect(() => {
-		makeScale(tonic, variant);
-	}, [tonic, variant, makeScale]);
+		makeScale(tonic);
+	}, [tonic, makeScale]);
 
 	useEffect(() => {
 		const handleKeyUp = (e: KeyboardEvent) => {
