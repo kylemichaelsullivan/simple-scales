@@ -7,13 +7,19 @@ type ModeProps = {
 	background: 'bg-slate-200' | 'bg-slate-300';
 	isCurrent: boolean;
 	the_notes: string[];
+	relativeMajor: string;
+	relativeMinor: string;
 };
 
-const Mode = ({ mode, background, isCurrent, the_notes }: ModeProps) => {
-	const className = useMemo(
-		() => (isCurrent ? 'font-semibold' : 'font-medium'),
-		[isCurrent],
-	);
+const Mode = ({
+	mode,
+	background,
+	isCurrent,
+	the_notes,
+	relativeMajor,
+	relativeMinor,
+}: ModeProps) => {
+	const className = useMemo(() => (isCurrent ? 'font-semibold' : 'font-medium'), [isCurrent]);
 
 	const noteElements = useMemo(
 		() =>
@@ -22,13 +28,17 @@ const Mode = ({ mode, background, isCurrent, the_notes }: ModeProps) => {
 					{note}
 				</div>
 			)),
-		[the_notes],
+		[the_notes]
 	);
 
 	return (
-		<div className={`Mode grid-cols-17 grid ${background} capitalize`}>
-			<div className={`${className} text-xxs col-span-3 sm:text-base`}>
+		<div className={`Mode grid-cols-17 grid items-center ${background} capitalize`}>
+			<div className={`${className} flex flex-col text-xxs col-span-3 sm:text-base`}>
 				{mode}
+				<span className='hidden text-gray-500 text-xxs leading-snug sm:block'>
+					[{relativeMajor}, {relativeMinor}
+					<span className='lowercase'>m</span>]
+				</span>
 			</div>
 			{noteElements}
 		</div>
