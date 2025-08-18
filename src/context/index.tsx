@@ -335,10 +335,12 @@ export const IndexContextProvider = ({ children }: IndexContextProviderProps) =>
 	return <IndexContext.Provider value={contextValue}>{children}</IndexContext.Provider>;
 };
 
-export const useIndex = (): IndexContextType => {
+function useIndex(): IndexContextType {
 	const context = useContext(IndexContext);
 	if (!context) {
 		throw new Error('useIndex must be used within an <IndexContextProvider />');
 	}
 	return context;
-};
+}
+
+export { useIndex };
