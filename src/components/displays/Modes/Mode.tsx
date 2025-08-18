@@ -19,7 +19,7 @@ const Mode = ({
 	relativeMajor,
 	relativeMinor,
 }: ModeProps) => {
-	const className = useMemo(() => (isCurrent ? 'font-semibold' : 'font-medium'), [isCurrent]);
+	const className = useMemo(() => (isCurrent ? 'font-bold' : 'font-normal'), [isCurrent]);
 
 	const noteElements = useMemo(
 		() =>
