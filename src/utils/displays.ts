@@ -1,6 +1,6 @@
-import type { Displays_Icon, Displays_Text } from '@/types';
+import type { DisplayIcon, DisplayText } from '@/types';
 
-type DisplayItem = Record<Displays_Icon, Displays_Text>;
+type DisplayItem = Record<DisplayIcon, DisplayText>;
 
 export const allDisplays: DisplayItem[] = [
 	{

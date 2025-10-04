@@ -1,34 +1,8 @@
-import type { Notes_Flats, Notes_Sharps } from '@/types';
+import type { Note } from '@/types';
 
-export const Flats: Notes_Flats[] = [
-	'C',
-	'D♭',
-	'D',
-	'E♭',
-	'E',
-	'F',
-	'G♭',
-	'G',
-	'A♭',
-	'A',
-	'B♭',
-	'B',
-];
+export const Flats: Note[] = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'G♭', 'G', 'A♭', 'A', 'B♭', 'B'];
 
-export const Sharps: Notes_Sharps[] = [
-	'C',
-	'C♯',
-	'D',
-	'D♯',
-	'E',
-	'F',
-	'F♯',
-	'G',
-	'G♯',
-	'A',
-	'A♯',
-	'B',
-];
+export const Sharps: Note[] = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'];
 
 export const Intervals = {
 	major: [1, 1, 0.5, 1, 1, 1],
@@ -44,8 +18,7 @@ export const Intervals = {
 };
 
 export const Frequencies: number[] = [
-	261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.0, 415.3, 440.0,
-	466.16, 493.88,
+	261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.0, 415.3, 440.0, 466.16, 493.88,
 ];
 
 /*
