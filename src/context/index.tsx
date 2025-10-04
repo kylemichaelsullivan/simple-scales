@@ -8,33 +8,27 @@ import {
 	type ReactNode,
 } from 'react';
 
-import { Flats, Sharps, Intervals, Frequencies } from '@/lookups/Notes';
+import { Flats, Sharps, Intervals, Frequencies } from '@/utils/notes';
 
-import type {
-	Scale_Tonics,
-	Scale_Variants,
-	Scale_UsingFlats,
-	Scale_Modes,
-	Displays_Icon,
-} from '@/types';
+import type { NoteIndex, ScaleType, ScaleMode, DisplayIcon } from '@/types';
 
 type IndexContextType = {
-	tonic: Scale_Tonics;
-	variant: Scale_Variants;
-	usingFlats: Scale_UsingFlats;
+	tonic: NoteIndex;
+	variant: ScaleType;
+	usingFlats: boolean;
 	notes: number[];
-	displays: Displays_Icon[];
+	displays: DisplayIcon[];
 	showNoteLabels: boolean;
 	handleTonicChange: (tonic: number) => void;
-	handleVariantChange: (variant: Scale_Variants) => void;
-	handleDisplaysClick: (icon: Displays_Icon) => void;
+	handleVariantChange: (variant: ScaleType) => void;
+	handleDisplaysClick: (icon: DisplayIcon) => void;
 	capitalizeFirstLetter: (string: string) => string;
 	toggleUsingFlats: () => void;
 	toggleShowNoteLabels: () => void;
 	getNote: (note: number) => string;
-	getRelativeMajor: (mode: Scale_Modes) => string;
-	getRelativeMinor: (mode: Scale_Modes) => string;
-	makeScale: (tonic: Scale_Tonics, variant: Scale_Variants) => void;
+	getRelativeMajor: (mode: ScaleMode) => string;
+	getRelativeMinor: (mode: ScaleMode) => string;
+	makeScale: (tonic: NoteIndex, variant: ScaleType) => void;
 	playNote: (note: number) => void;
 	reset: () => void;
 };
@@ -45,10 +39,10 @@ type IndexContextProviderProps = {
 	children: ReactNode;
 };
 
-const initialTonic: Scale_Tonics = 0;
-const initialVariant: Scale_Variants = 'major';
-const initialUsingFlats: Scale_UsingFlats = true;
-const initialDisplays: Displays_Icon[] = ['keyboard', 'guitar', 'ukelele', 'mandolin'];
+const initialTonic: NoteIndex = 0;
+const initialVariant: ScaleType = 'major';
+const initialUsingFlats: boolean = true;
+const initialDisplays: DisplayIcon[] = ['keyboard', 'guitar', 'ukelele', 'mandolin'];
 const initialShowNoteLabels: boolean = true;
 
 const useLocalStorage = <T,>(
@@ -84,14 +78,11 @@ const useLocalStorage = <T,>(
 };
 
 export const IndexContextProvider = ({ children }: IndexContextProviderProps) => {
-	const [tonic, setTonic] = useState<Scale_Tonics>(initialTonic);
-	const [variant, setVariant] = useState<Scale_Variants>(initialVariant);
-	const [usingFlats, setUsingFlats] = useLocalStorage<Scale_UsingFlats>(
-		'usingFlats',
-		initialUsingFlats
-	);
-	const [notes, setNotes] = useState<Scale_Tonics[]>([tonic]);
-	const [displays, setDisplays] = useLocalStorage<Displays_Icon[]>(
+	const [tonic, setTonic] = useState<NoteIndex>(initialTonic);
+	const [variant, setVariant] = useState<ScaleType>(initialVariant);
+	const [usingFlats, setUsingFlats] = useLocalStorage<boolean>('usingFlats', initialUsingFlats);
+	const [notes, setNotes] = useState<NoteIndex[]>([tonic]);
+	const [displays, setDisplays] = useLocalStorage<DisplayIcon[]>(
 		'selectedDisplays',
 		initialDisplays
 	);
@@ -102,18 +93,18 @@ export const IndexContextProvider = ({ children }: IndexContextProviderProps) =>
 	);
 	const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
 
-	const handleTonicChange = useCallback((tonic: Scale_Tonics) => {
+	const handleTonicChange = useCallback((tonic: NoteIndex) => {
 		setTonic(tonic);
 	}, []);
 
-	const handleVariantChange = useCallback((variant: Scale_Variants) => {
+	const handleVariantChange = useCallback((variant: ScaleType) => {
 		setVariant(variant);
 	}, []);
 
-	const handleDisplaysClick = useCallback((icon: Displays_Icon) => {
-		setDisplays((prev: Displays_Icon[]) => {
+	const handleDisplaysClick = useCallback((icon: DisplayIcon) => {
+		setDisplays((prev: DisplayIcon[]) => {
 			const newDisplays =
-				prev.includes(icon) ? prev.filter((item: Displays_Icon) => item !== icon) : [...prev, icon];
+				prev.includes(icon) ? prev.filter((item: DisplayIcon) => item !== icon) : [...prev, icon];
 			return newDisplays;
 		});
 	}, []);
@@ -184,8 +175,8 @@ export const IndexContextProvider = ({ children }: IndexContextProviderProps) =>
 	);
 
 	const makeScale = useCallback(
-		(tonic: Scale_Tonics) => {
-			const scaleNotes: Scale_Tonics[] = [tonic];
+		(tonic: NoteIndex) => {
+			const scaleNotes: NoteIndex[] = [tonic];
 			const intervals = currentIntervals;
 			let currentNote = tonic;
 
@@ -200,7 +191,7 @@ export const IndexContextProvider = ({ children }: IndexContextProviderProps) =>
 	);
 
 	const getRelativeMajor = useCallback(
-		(mode: Scale_Modes) => {
+		(mode: ScaleMode) => {
 			// For each mode, calculate the relative major key that shares the same key signature
 			let relativeMajorNote: number;
 
@@ -236,7 +227,7 @@ export const IndexContextProvider = ({ children }: IndexContextProviderProps) =>
 	);
 
 	const getRelativeMinor = useCallback(
-		(mode: Scale_Modes) => {
+		(mode: ScaleMode) => {
 			// For each mode, calculate the relative minor key that shares the same key signature
 			let relativeMinorNote: number;
 

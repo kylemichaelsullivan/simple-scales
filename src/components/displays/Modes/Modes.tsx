@@ -4,19 +4,22 @@ import { useIndex } from '@/context';
 
 import ModesHeading from './ModesHeading';
 import Mode from './Mode';
+import { Intervals } from '@/utils/notes';
 
-import { Intervals } from '@/lookups/Notes';
-import type { Scale_Modes } from '@/types';
+import type { ScaleMode } from '@/types';
 
 function Modes() {
-	const { tonic, getNote, variant, usingFlats, getRelativeMajor, getRelativeMinor } = useIndex();
+	const { tonic, getNote, variant, getRelativeMajor, getRelativeMinor } = useIndex();
 
 	const tonicNote = useMemo(() => getNote(tonic), [getNote, tonic]);
 
 	const generateModes = useMemo(
 		() => (tonic: number) => {
 			const modes = Object.keys(Intervals).filter(
-				key => key !== 'major' && key !== 'minor' && key !== 'pentatonic'
+				key =>
+					key !== 'major' &&
+					key !== 'minor' &&
+					key !== 'pentatonic'
 			) as Array<keyof typeof Intervals>;
 
 			return modes.map(mode => {
@@ -32,15 +35,15 @@ function Modes() {
 				return {
 					mode,
 					notes: modeNotes.map(getNote),
-					relativeMajor: getRelativeMajor(mode as Scale_Modes),
-					relativeMinor: getRelativeMinor(mode as Scale_Modes),
+					relativeMajor: getRelativeMajor(mode as ScaleMode),
+					relativeMinor: getRelativeMinor(mode as ScaleMode),
 				};
 			});
 		},
 		[getNote, getRelativeMajor, getRelativeMinor]
 	);
 
-	const modes = useMemo(() => generateModes(tonic), [tonic, usingFlats, generateModes]);
+	const modes = useMemo(() => generateModes(tonic), [tonic, generateModes]);
 
 	const isCurrentMode = useMemo(
 		() => (mode: string) => {

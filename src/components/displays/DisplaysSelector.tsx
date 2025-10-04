@@ -1,9 +1,8 @@
 import { useIndex } from '@/context';
-import { allDisplays } from '@/lookups/Displays';
-
+import { allDisplays } from '@/utils/displays';
 import DisplaySelector from './DisplaySelector';
 
-import type { Displays_Icon } from '@/types';
+import type { DisplayIcon } from '@/types';
 
 function DisplaysSelector() {
 	const { displays, handleDisplaysClick } = useIndex();
@@ -17,7 +16,7 @@ function DisplaysSelector() {
 							key={icon}
 							icon={icon}
 							text={text}
-							isActive={displays.includes(icon as Displays_Icon)}
+							isActive={displays.includes(icon as DisplayIcon)}
 							onClick={handleDisplaysClick}
 						/>
 					))}

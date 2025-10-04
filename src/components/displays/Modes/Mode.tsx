@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 
-import type { Scale_Modes, Scale_Variants } from '@/types';
+import type { ScaleMode, ScaleType } from '@/types';
 
 type ModeProps = {
-	mode: Scale_Modes | Scale_Variants;
+	mode: ScaleMode | ScaleType;
 	background: 'bg-slate-200' | 'bg-slate-300';
 	isCurrent: boolean;
 	the_notes: string[];

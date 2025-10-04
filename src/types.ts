@@ -1,36 +1,10 @@
 import type { IconName } from './components/Icon';
 
-export type Notes_Flats =
-	| 'C'
-	| 'D♭'
-	| 'D'
-	| 'E♭'
-	| 'E'
-	| 'F'
-	| 'G♭'
-	| 'G'
-	| 'A♭'
-	| 'A'
-	| 'B♭'
-	| 'B';
+export type Note = string;
+export type NoteIndex = number;
+export type NoteCount = number;
 
-export type Notes_Sharps =
-	| 'C'
-	| 'C♯'
-	| 'D'
-	| 'D♯'
-	| 'E'
-	| 'F'
-	| 'F♯'
-	| 'G'
-	| 'G♯'
-	| 'A'
-	| 'A♯'
-	| 'B';
-
-export type Scale_Tonics = number;
-
-export type Scale_Modes =
+export type ScaleMode =
 	| 'ionian'
 	| 'dorian'
 	| 'phrygian'
@@ -39,16 +13,8 @@ export type Scale_Modes =
 	| 'aeolian'
 	| 'locrian';
 
-export type Scale_Variants = 'major' | 'minor' | 'pentatonic' | Scale_Modes;
+export type ScaleType = 'major' | 'minor' | 'pentatonic' | ScaleMode;
 
-export type Scale_UsingFlats = boolean;
-export type Scale_NoteCount = number;
+export type DisplayText = 'Piano' | 'Guitar' | 'Banjo' | 'Ukelele' | 'Mandolin' | 'Modes';
 
-export type Displays_Text =
-	| 'Piano'
-	| 'Guitar'
-	| 'Banjo'
-	| 'Ukelele'
-	| 'Mandolin'
-	| 'Modes';
-export type Displays_Icon = IconName;
+export type DisplayIcon = IconName;

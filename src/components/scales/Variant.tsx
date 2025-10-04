@@ -1,11 +1,11 @@
-import { Scale_Variants } from '@/types';
+import { ScaleType } from '@/types';
 
 import { useIndex } from '@/context';
 
 function Variant() {
 	const { variant, handleVariantChange, capitalizeFirstLetter } = useIndex();
 
-	const variants: Scale_Variants[] = [
+	const variants: ScaleType[] = [
 		'major',
 		'minor',
 		'pentatonic',
@@ -22,9 +22,9 @@ function Variant() {
 		<select
 			className='Variant min-w-16 rounded-none border border-slate-500 px-1 hover:ring-1'
 			value={variant}
-			onChange={(e) => handleVariantChange(e.target.value as Scale_Variants)}
+			onChange={e => handleVariantChange(e.target.value as ScaleType)}
 		>
-			{variants.map((variantOption) => (
+			{variants.map(variantOption => (
 				<option key={variantOption} value={variantOption}>
 					{capitalizeFirstLetter(variantOption)}
 				</option>
