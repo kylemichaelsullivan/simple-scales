@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+	--grid-template-columns-5: repeat(5, minmax(0, 1fr));
+	--grid-template-columns-7: repeat(7, minmax(0, 1fr));
+	--grid-template-columns-17: repeat(17, minmax(0, 1fr));
+}
 
 :root {
 	--dot-size: 0.675rem;
@@ -102,6 +106,10 @@ select {
 	border-bottom-width: 0;
 }
 
+.Banjo .DroneString.ml-1 {
+	margin-left: calc(var(--spacing) * 0.9);
+}
+
 .Banjo .DroneString .SkippedFret {
 	--tw-bg-opacity: 1;
 	border-bottom: 1px solid rgb(125 211 252 / var(--tw-bg-opacity));
@@ -138,18 +146,20 @@ select {
 .Mandolin {
 	--fretboard-color: #e6d5bc;
 }
-
 /* Utility Classes */
-.grid-cols-17 {
-	grid-template-columns: repeat(17, minmax(0, 1fr));
+.text-xxxs {
+	font-size: 0.5rem;
 }
 
 .text-xxs {
 	font-size: 0.675rem;
 }
 
-.text-xxxs {
-	font-size: 0.5rem;
+@media (width >= 40rem) {
+	.sm\:text-base {
+		font-size: var(--text-base);
+		line-height: var(--tw-leading, var(--text-base--line-height));
+	}
 }
 
 /* camelCase to match React Prop */
