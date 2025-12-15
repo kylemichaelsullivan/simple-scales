@@ -10,7 +10,7 @@
 	--dot-size: 0.675rem;
 }
 
-select {
+button, select {
 	cursor: pointer;
 }
 
