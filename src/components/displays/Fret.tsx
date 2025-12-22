@@ -14,10 +14,16 @@ function Fret({ note }: FretProps) {
 			className='Fret w-full border-r border-black'
 			title={getNote(note)}
 			onClick={() => playNote(note)}
+			onKeyDown={(e) => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					playNote(note);
+				}
+			}}
+			role='button'
+			tabIndex={0}
 		>
-			{notes.includes(note) && (
-				<AllowedNote note={getNote(note)} isTonic={note === tonic} />
-			)}
+			{notes.includes(note) && <AllowedNote note={getNote(note)} isTonic={note === tonic} />}
 		</div>
 	);
 }

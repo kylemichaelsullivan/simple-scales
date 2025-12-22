@@ -1,7 +1,7 @@
-import Scales from './scales/Scales';
 import Notes from './Notes';
-import DisplaysSelector from './displays/DisplaysSelector';
 import Displays from './displays/Displays';
+import DisplaysSelector from './displays/DisplaysSelector';
+import Scales from './scales/Scales';
 
 function Body() {
 	return (

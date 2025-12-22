@@ -1,6 +1,6 @@
-import Label from '@/components/displays/Label';
 import FretNumbers from '@/components/displays/FretNumbers';
-import String from '@/components/displays/String';
+import FretString from '@/components/displays/FretString';
+import Label from '@/components/displays/Label';
 
 function Ukelele() {
 	// G C E A
@@ -14,7 +14,7 @@ function Ukelele() {
 
 				<div className='fretboard border border-black'>
 					{openNotes.map((note, i) => (
-						<String openNote={note} key={`${note}-${i}`} />
+						<FretString openNote={note} key={`ukelele-string-${note}-${i}`} />
 					))}
 				</div>
 			</div>

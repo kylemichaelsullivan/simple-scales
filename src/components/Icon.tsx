@@ -1,9 +1,9 @@
-import keyboardIcon from '/icons/keyboard.svg';
-import guitarIcon from '/icons/guitar.svg';
 import banjoIcon from '/icons/banjo.svg';
-import ukeleleIcon from '/icons/ukelele.svg';
+import guitarIcon from '/icons/guitar.svg';
+import keyboardIcon from '/icons/keyboard.svg';
 import mandolinIcon from '/icons/mandolin.svg';
 import standIcon from '/icons/stand.svg';
+import ukeleleIcon from '/icons/ukelele.svg';
 
 const iconMap = {
 	keyboard: keyboardIcon,

@@ -16,14 +16,16 @@ function Key({ isBlack, note, isAllowed }: KeyProps) {
 			className={`Key border border-black ${isBlack ? 'black' : 'white'}`}
 			title={getNote(note)}
 			onClick={() => playNote(note)}
+			onKeyDown={(e) => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					playNote(note);
+				}
+			}}
+			role='button'
+			tabIndex={0}
 		>
-			{isAllowed && (
-				<AllowedNote
-					note={getNote(note)}
-					isTonic={note === tonic}
-					isPiano={true}
-				/>
-			)}
+			{isAllowed && <AllowedNote note={getNote(note)} isTonic={note === tonic} isPiano={true} />}
 		</div>
 	);
 }

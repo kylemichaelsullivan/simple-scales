@@ -14,10 +14,16 @@ function Nut({ note }: NutProps) {
 			className='Nut w-8 bg-black'
 			title={getNote(note)}
 			onClick={() => playNote(note)}
+			onKeyDown={(e) => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					playNote(note);
+				}
+			}}
+			role='button'
+			tabIndex={0}
 		>
-			{notes.includes(note) && (
-				<AllowedNote note={getNote(note)} isTonic={note === tonic} />
-			)}
+			{notes.includes(note) && <AllowedNote note={getNote(note)} isTonic={note === tonic} />}
 		</div>
 	);
 }

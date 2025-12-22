@@ -1,6 +1,6 @@
+import Title from './Title';
 import ShowNotes from './buttons/ShowNotes';
 import UsingFlats from './buttons/UsingFlats';
-import Title from './Title';
 
 function Header() {
 	return (

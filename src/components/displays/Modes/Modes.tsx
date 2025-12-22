@@ -1,10 +1,10 @@
-import { useMemo, memo } from 'react';
+import { memo, useMemo } from 'react';
 
 import { useIndex } from '@/context';
 
-import ModesHeading from './ModesHeading';
-import Mode from './Mode';
 import { Intervals } from '@/utils/notes';
+import Mode from './Mode';
+import ModesHeading from './ModesHeading';
 
 import type { ScaleMode } from '@/types';
 
@@ -16,21 +16,18 @@ function Modes() {
 	const generateModes = useMemo(
 		() => (tonic: number) => {
 			const modes = Object.keys(Intervals).filter(
-				key =>
-					key !== 'major' &&
-					key !== 'minor' &&
-					key !== 'pentatonic'
+				(key) => key !== 'major' && key !== 'minor' && key !== 'pentatonic'
 			) as Array<keyof typeof Intervals>;
 
-			return modes.map(mode => {
+			return modes.map((mode) => {
 				const intervals = Intervals[mode] as number[];
 				const modeNotes: number[] = [tonic];
 
 				let currentNote = tonic;
-				intervals.forEach(interval => {
+				for (const interval of intervals) {
 					currentNote += interval * 2;
 					modeNotes.push(currentNote % 12);
-				});
+				}
 
 				return {
 					mode,

@@ -1,7 +1,7 @@
 import { useIndex } from '@/context';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function TransposeDown() {
 	const { tonic, handleTonicChange } = useIndex();

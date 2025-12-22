@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
 	--grid-template-columns-5: repeat(5, minmax(0, 1fr));
@@ -10,7 +10,8 @@
 	--dot-size: 0.675rem;
 }
 
-button, select {
+button,
+select {
 	cursor: pointer;
 }
 
@@ -23,23 +24,23 @@ button, select {
 	background-color: var(--fretboard-color);
 }
 
-.String,
+.FretString,
 .DroneString {
 	position: relative;
 	height: 2rem;
 	min-height: 1rem;
 }
 
-.String::after,
+.FretString::after,
 .DroneString::before,
 .DroneString::after {
 	position: absolute;
-	content: '';
+	content: "";
 	top: 50%;
 	transform: translateY(-50%);
 }
 
-.String::after,
+.FretString::after,
 .DroneString::after {
 	background-color: silver;
 	width: 100%;
@@ -98,11 +99,11 @@ button, select {
 	--fretboard-color: #f5f5dc;
 }
 
-.Banjo .String:nth-child(4) .Fret {
+.Banjo .FretString:nth-child(4) .Fret {
 	border-bottom-width: 1px;
 }
 
-.Banjo .String:nth-child(4) .Fret:nth-child(n + 7) {
+.Banjo .FretString:nth-child(4) .Fret:nth-child(n + 7) {
 	border-bottom-width: 0;
 }
 
@@ -123,7 +124,7 @@ button, select {
 .Banjo .DroneString .SkippedFret:first-child::before {
 	--tw-bg-opacity: 1;
 	position: absolute;
-	content: '';
+	content: "";
 	background-color: rgb(125 211 252 / var(--tw-bg-opacity));
 	width: 1rem;
 	height: 110%;

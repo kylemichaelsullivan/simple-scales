@@ -1,6 +1,6 @@
-import Label from '@/components/displays/Label';
 import FretNumbers from '@/components/displays/FretNumbers';
-import String from '@/components/displays/String';
+import FretString from '@/components/displays/FretString';
+import Label from '@/components/displays/Label';
 import DroneString from './DroneString';
 
 function Banjo() {
@@ -14,7 +14,7 @@ function Banjo() {
 				<FretNumbers />
 				<div className='fretboard flex w-full flex-col border border-b-0 border-black'>
 					{openNotes.map((note, i) => (
-						<String openNote={note} key={`${note}-${i}`} />
+						<FretString openNote={note} key={`banjo-string-${note}-${i}`} />
 					))}
 					<DroneString openNote={7} key={`${7}-${4}`} />
 				</div>
